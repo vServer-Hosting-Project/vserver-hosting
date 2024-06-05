@@ -46,7 +46,7 @@
         <section id="cart">
             <div class="warenkorbcontainer">
                 <div class="box">
-                    <h3>Ihr Warenkorb</h3>
+                    <h3 class="Ihr-Warenkorb">Ihr Warenkorb</h3>
                     <!-- The cart items would be dynamically loaded here -->
                     <div id="cartItems"></div>
                 </div>
@@ -62,8 +62,7 @@
         // Check if the user is logged in
         if (!localStorage.getItem('user')) {
             // If the user is not logged in, show a message asking them to log in
-            $('#cartItems').html('<p>Um den Warenkorb zu sehen, bitte <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">einloggen</a>.</p>');
-        } else {
+            $('#cartItems').html('<p class="login-message">Um den Warenkorb zu sehen, bitte <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">einloggen</a>.</p>');        } else {
             // If the user is logged in, load the cart items
             // This is just a placeholder and should be replaced with your actual code for loading the cart items
             $('#cartItems').load('partials/cartItems.html');
