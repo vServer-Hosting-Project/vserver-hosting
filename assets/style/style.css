@@ -1,3 +1,15 @@
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 0; /* Logo nach links setzen */
+    z-index: 2;
+}
+
+.navbar {
+    position: relative;
+}
+
+
 .custom-navbar{
     background-color: rgb(72, 255, 0);
   }
