@@ -60,7 +60,7 @@ h3 {
 }
 
 /* Configuration section styling */
-#configuration, #servers, #more-info-section {
+#configuration, #servers, #info #more-info-section {
     padding: 2em;
     max-width: 1200px;
     margin: 0 auto;
@@ -92,6 +92,12 @@ select {
 
 /* Server containers section styling */
 #servers {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#info {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -195,8 +201,16 @@ select {
 }
 
 /* Apply fade-in effect */
-.info-containers {
+.info-container {
+    margin: 2.5em 0;
     animation: fadeIn 0.5s;
+}
+
+.info-container2 {
+    margin: 1.5em 0;
+    text-align: center;
+    flex-basis: 100%;
+    
 }
 
 /* Media queries for responsiveness */
