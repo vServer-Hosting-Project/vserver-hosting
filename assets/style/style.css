@@ -1,85 +1,9 @@
-/* Support page specific styles */
 
-/* Support form styling */
-.support-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 1.5em;
-    margin: 5em 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    border-radius: 10px;
-    transition: transform 0.2s;
-}
-
-/* Chatbot container styling */
-.chatbot-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 1.5em;
-    margin: 5em 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    border-radius: 10px;
-    transition: transform 0.2s;
-}
-
-/* Chatbot area styling */
-.chatbot {
-    height: 335px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 1em;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-/* Form input styling */
-.support-form .form-control {
-    margin-bottom: 1em;
-}
-
-/* Form button styling */
-.support-form .btn {
-    width: 100%;
-}
-
-/* Overlapping blocks */
-.container .col-md-6 {
-    position: relative;
-    z-index: 1;
-}
-
-.container .col-md-6:first-child {
-    margin-bottom: -50px;
-}
-
-
-.logo-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #ffffff;
-}
-
-
-
-.warenkorbcontainer {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 1.5em;
-    margin: 1em 0;
-    flex-basis: calc(25% - 2em);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    border-radius: 10px;
-    transition: transform 0.2s;
-}
 
 .custom-navbar{
     background-color: rgb(72, 255, 0);
   }
-  
+
   .nav-link{
     color:white;
     font-weight: bold;
@@ -88,7 +12,7 @@
   .navbar-nav {
     margin-right: 20px;
   }
-  
+
 /* Reset some default styles */
 body, h1, h2, h3, p, select, button {
     margin: 0;
@@ -101,18 +25,18 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-image:url(../images/hinergrund2.jpg);
+    background-image:url(../images/hinergrund.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #f4f4f417;
-    color: #000000;
+    color: #ffffff;
 }
 
 /* Header styling */
 header {
     background-color: #bebebe6e;
-    color: #000000;
+    color: #fff;
     padding: 1em 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -128,17 +52,11 @@ h1 {
 h2 {
     color: #fff;
     margin: 0;
-    font-size: 2em;
-}
-
-h3 {
-    color: #ff0000;
-    margin: 0;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 /* Configuration section styling */
-#configuration, #servers, #info #more-info-section {
+#configuration, #servers, #more-info-section {
     padding: 2em;
     max-width: 1200px;
     margin: 0 auto;
@@ -170,12 +88,6 @@ select {
 
 /* Server containers section styling */
 #servers {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#info {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -279,16 +191,8 @@ select {
 }
 
 /* Apply fade-in effect */
-.info-container {
-    margin: 2.5em 0;
+.info-containers {
     animation: fadeIn 0.5s;
-}
-
-.info-container2 {
-    margin: 1.5em 0;
-    text-align: center;
-    flex-basis: 100%;
-    
 }
 
 /* Media queries for responsiveness */
@@ -306,10 +210,4 @@ select {
     .toggle-info, .order-button {
         width: 100%;
     }
-}
-
-.image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
 }
