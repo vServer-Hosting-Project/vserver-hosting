@@ -1,24 +1,71 @@
-<nav class="navbar navbar-expand-lg custom-navbar">
-    <a class="navbar-brand" href="/vserver-hosting/index.html">
-        <div class="logo-icon">
-            <img src="/vserver-hosting/assets/images/firma.png" width="80" height="50">
-
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <a class="navbar-brand" href="./index.html">
+            <div class="logo-icon">
+                <img src="./assets/images/firma.png" width="80" height="50">
+    
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="./pages/Support.html" id="support-link">Hilfe & Support</a>
+                </li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="./pages/warenkorb.html" id="warenkorb-link">Warenkorb</a>
+                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                </li>
+            </ul>
         </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link custom-link" href="/vserver-hosting/pages/Support.html">Hilfe & Support</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link custom-link" href="/vserver-hosting/pages/warenkorb.html">Warenkorb</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link custom-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    </nav>
+
+    <!-- Warenkorb reload-->
+    <script>
+        document.getElementById('warenkorb-link').addEventListener('click', function(e) {
+            if (window.location.pathname.endsWith('/warenkorb.html')) {
+                e.preventDefault();
+                window.location.href = './warenkorb.html';
+            }
+        });
+        </script>
+    <!-- Warenkorb reload-->
+
+    <!-- Support reload-->
+    <script>
+        document.getElementById('support-link').addEventListener('click', function(e) {
+            if (window.location.pathname.endsWith('/Support.html')) {
+                e.preventDefault();
+                window.location.href = './Support.html';
+            }
+        });
+        </script>
+    <!-- Support reload-->
+    
+    <!-- Warenkorbseite zu Supportseite-->
+    <script>
+        document.getElementById('support-link').addEventListener('click', function(e) {
+            if (window.location.pathname.endsWith('/warenkorb.html')) {
+                e.preventDefault();
+                window.location.href = './Support.html';
+            }
+        });
+        </script>
+    <!-- Warenkorbseite zu Supportseite-->
+
+
+    <!-- Supportseite zu Warenkorbseite-->
+    <script>
+        document.getElementById('warenkorb-link').addEventListener('click', function(e) {
+            if (window.location.pathname.endsWith('/Support.html')) {
+                e.preventDefault();
+                window.location.href = './warenkorb.html';
+            }
+        });
+        </script>
+    <!-- Supportseite zu Warenkorbseite-->
