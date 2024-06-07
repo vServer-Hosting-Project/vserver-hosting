@@ -20,101 +20,160 @@
       $("#navbar").load("partials/navbar.html");
     });
     </script>
-
     <!-- Navbar end -->
 
-     <!-- Login Modal start -->
-      <div id="loginModalContainer"></div>
+    <!-- Login Modal start -->
+    <div id="loginModalContainer"></div>
 
-     <script>
-        $(function(){
-
+    <script>
+    $(function(){
         $("#loginModalContainer").load("partials/loginModal.html");
-        });
-     </script>
+    });
+    </script>
     <!-- Login Modal end -->
 
     <!-- Register Modal start -->
     <div id="registermodalContainer"></div>
 
     <script>
-        $(function(){
-
+    $(function(){
         $("#registermodalContainer").load("partials/registermodal.html");
-        });
-     </script>
+    });
+    </script>
+    <!-- Register Modal end -->
 
-    <header>
-        <h3>vServer nach Ihren Wünschen</h3>
+    <header class="bg-primary text-white text-center py-5">
+        <h1>vServer Hosting nach Ihren Wünschen</h1>
+        <p>Unsere vServer bieten Ihnen dedizierte, garantierte Rechenleistung für anspruchsvolle Business-Anwendungen.</p>
     </header>
 
-    <section id="servers">
+    <section id="servers" class="py-5">
         <div class="container">
-            <h3>Unsere vServer</h3>
-            <p>Sind anspruchsvolle Business-Anwendungen erfordern dedizierte, garantierte Rechenleistung.</p>
-            <p>Aus diesem Grund weißen wir Ihrem Virtual Dedicated Server alle Ressourcen, </p>
-            wie RAM, CPU und Enterprise SSD, exklusiv zu.</p>
-            Sie betreiben einen Online-Shop, eine Intranet-Lösung, stehen vor einem kleinen oder einem </p>
-            komplexen Projekt? Unser Cloud VDS wächst jederzeit mit Ihren Anforderungen.
+            <h2 class="text-center">Unsere vServer Angebote</h2>
+            <p class="text-center">Ob kleiner Online-Shop oder komplexes Projekt - unser Cloud VDS wächst mit Ihren Anforderungen.</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="server-container card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">vServer 1</h3>
+                            <p>Betriebssystem: <span>Windows/Linux</span></p>
+                            <p>CPU: <span>1 CPU</span></p>
+                            <p>RAM: <span>2GB</span></p>
+                            <p>Speicher: <span>10GB (SSD)</span></p>
+                            <p>Preis: <span>XX,XX€ pro Monat</span></p>
+                            <button class="btn btn-primary order-button">Bestellen</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="server-container card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">vServer 2</h3>
+                            <p>Betriebssystem: <span>Windows/Linux</span></p>
+                            <p>CPU: <span>2 CPUs</span></p>
+                            <p>RAM: <span>4GB</span></p>
+                            <p>Speicher: <span>20GB (SSD)</span></p>
+                            <p>Preis: <span>XX,XX€ pro Monat</span></p>
+                            <button class="btn btn-primary order-button">Bestellen</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="server-container card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">vServer 3</h3>
+                            <p>Betriebssystem: <span>Windows/Linux</span></p>
+                            <p>CPU: <span>4 CPUs</span></p>
+                            <p>RAM: <span>8GB</span></p>
+                            <p>Speicher: <span>40GB (SSD)</span></p>
+                            <p>Preis: <span>XX,XX€ pro Monat</span></p>
+                            <button class="btn btn-primary order-button">Bestellen</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="server-container card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">vServer 4</h3>
+                            <p>Betriebssystem: <span>Windows/Linux</span></p>
+                            <p>CPU: <span>8 CPUs</span></p>
+                            <p>RAM: <span>16GB</span></p>
+                            <p>Speicher: <span>80GB (SSD)</span></p>
+                            <p>Preis: <span>XX,XX€ pro Monat</span></p>
+                            <button class="btn btn-primary order-button">Bestellen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-<section id="info">
-    <div class="info-container">
-<img src="./assets/images/infos.jpg" alt="infos" class="image">
-</div>
-
-<div class="info-container2">
-    <h3>Ihr vServer wartet bereits auf Sie...</h3>  
-     <p>Wie viel Leistung darf es sein?</p>
-    <p>Nach der Buchung steht Ihr vServer innerhalb von nur 60 Minuten zur Verfügung**</p>
-</div>
-
-    <section id="servers">
-        <div class="server-container">
-            <h3>vServer 1</h3>
-            <p2>Betriebssystem:</p2> <span>Windows/Linux</span></p>
-            <p2>CPU:</p2> <span>1 CPU</span></p>
-            <p2>RAM:</p2> <span>2GB</span></p>
-            <p2>Speicher:</p2> <span>10GB (SSD)</span></p>
-            <p1><span>9,99€ pro Monat</span></p1>
-           
-        </div>
-        <div class="server-container">
-            <h3>vServer 2</h3>
-            <p2>Betriebssystem:</p2> <span>Windows/Linux</span></p>
-            <p2>CPU:</p2> <span>2 CPUs</span></p>
-            <p2>RAM:</p2> <span>4GB</span></p>
-            <p2>Speicher:</p2> <span>20GB (SSD)</span></p>
-            <p1><span>19,99€ pro Monat</span></p1>
-
-        </div>
-        <div class="server-container">
-            <h3>vServer 3</h3>
-            <p2>Betriebssystem:</p2> <span>Windows/Linux</span></p>
-            <p2>CPU:</p2> <span>4 CPUs</span></p>
-            <p2>RAM:</p2> <span>8GB</span></p>
-            <p2>Speicher:</p2> <span>40GB (SSD)</span></p>
-            <p1> <span>26,99€ pro Monat</span></p1>
-            
-        </div>
-        <div class="server-container">
-            <h3>vServer 4</h3>
-            <p2>Betriebssystem:</p2> <span>Windows/Linux</span></p>
-            <p2>CPU:</p2> <span>8 CPUs</span></p>
-            <p2>RAM:</p2> <span>16GB</span></p>
-            <p2>Speicher:</p2> <span>80GB (SSD)</span></p>
-            <p1><span>40,00€ pro Monat</span></p1>
-         
-        </div>  
-        
-        
-
     </section>
-  
-    <footer>
-        <img src="./assets/images/betriebssysteme.jpg" alt="betriebssysteme" class="image">
-    </footer>
 
+    <section id="configuration" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Konfiguration</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="os" class="form-label">Betriebssystem:</label>
+                    <select id="os" class="form-select">
+                        <option value="linux">Linux</option>
+                        <option value="windows">Windows</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="duration" class="form-label">Zeitraum:</label>
+                    <select id="duration" class="form-select">
+                        <option value="1">1 Monat</option>
+                        <option value="12">12 Monate</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Konfigurieren</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="more-info-section" class="py-5">
+        <div class="container">
+            <button class="btn btn-info toggle-info">Weitere Informationen</button>
+            <div id="info-containers" class="info-containers mt-4">
+                <div class="info">
+                    <h4>vServer 1 Konfiguration</h4>
+                    <p>1 CPU, 2GB RAM, 10GB Speicher</p>
+                    <h4>Betriebssysteme</h4>
+                    <p>Windows/Linux</p>
+                    <h4>Vertragsinfos</h4>
+                    <p>1 Monat oder 12 Monate</p>
+                </div>
+                <div class="info">
+                    <h4>vServer 2 Konfiguration</h4>
+                    <p>2 CPUs, 4GB RAM, 20GB Speicher</p>
+                    <h4>Betriebssysteme</h4>
+                    <p>Windows/Linux</p>
+                    <h4>Vertragsinfos</h4>
+                    <p>1 Monat oder 12 Monate</p>
+                </div>
+                <div class="info">
+                    <h4>vServer 3 Konfiguration</h4>
+                    <p>4 CPUs, 8GB RAM, 40GB Speicher</p>
+                    <h4>Betriebssysteme</h4>
+                    <p>Windows/Linux</p>
+                    <h4>Vertragsinfos</h4>
+                    <p>1 Monat oder 12 Monate</p>
+                </div>
+                <div class="info">
+                    <h4>vServer 4 Konfiguration</h4>
+                    <p>8 CPUs, 16GB RAM, 80GB Speicher</p>
+                    <h4>Betriebssysteme</h4>
+                    <p>Windows/Linux</p>
+                    <h4>Vertragsinfos</h4>
+                    <p>1 Monat oder 12 Monate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 vServer Hosting. Alle Rechte vorbehalten.</p>
+    </footer>
 
 </body>
 </html>
