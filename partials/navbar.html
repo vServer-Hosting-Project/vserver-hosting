@@ -69,3 +69,16 @@
         });
         </script>
     <!-- Supportseite zu Warenkorbseite-->
+
+    <!-- Logo und index verlinkung von den Seiten -->
+    <script>
+        // Pfad zur aktuellen Seite
+        var path = window.location.pathname;
+    
+        // Überprüfen, ob Sie sich auf der Warenkorb-Seite befinden
+        if (path.endsWith('/warenkorb.html') || (path.endsWith('/Support.html'))) {
+            // Pfad zum Bild und Link zur Indexseite anpassen
+            document.querySelector('.logo-icon img').src = '../assets/images/firma.png';
+            document.querySelector('.navbar-brand').href = '../index.html';
+        }
+    </script>
