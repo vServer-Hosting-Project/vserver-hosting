@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,45 +13,111 @@
 <body>
 
     <!-- Navbar start -->
-    <div id="navbar"></div>
-
-    <script>
-    $(function(){
-      $("#navbar").load("partials/navbar.html");
-    });
-    </script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">vServer Hosting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/abwicklung.html">Abwicklung</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/bestell.html">Bestellen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/Support.html">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/verwaltung.html">Verwaltung</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/warenkorb.html">Warenkorb</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrieren</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Navbar end -->
 
     <!-- Login Modal start -->
-    <div id="loginModalContainer"></div>
-
-    <script>
-    $(function(){
-        $("#loginModalContainer").load("partials/loginModal.html");
-    });
-    </script>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email Adresse</label>
+                            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Passwort</label>
+                            <input type="password" class="form-control" id="loginPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Login Modal end -->
 
     <!-- Register Modal start -->
-    <div id="registermodalContainer"></div>
-
-    <script>
-    $(function(){
-        $("#registermodalContainer").load("partials/registermodal.html");
-    });
-    </script>
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registrieren</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email Adresse</label>
+                            <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Passwort</label>
+                            <input type="password" class="form-control" id="registerPassword">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Passwort bestätigen</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrieren</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Register Modal end -->
 
-    <header class="bg-primary text-white text-center py-5">
+    <!-- Header Section start -->
+    <header class="bg-primary text-white text-center py-5" style="background-image: url('assets/images/hinergrund.jpg'); background-size: cover;">
         <h1>vServer Hosting nach Ihren Wünschen</h1>
         <p>Unsere vServer bieten Ihnen dedizierte, garantierte Rechenleistung für anspruchsvolle Business-Anwendungen.</p>
     </header>
+    <!-- Header Section end -->
 
+    <!-- Server Angebote Section start -->
     <section id="servers" class="py-5">
         <div class="container">
             <h2 class="text-center">Unsere vServer Angebote</h2>
             <p class="text-center">Ob kleiner Online-Shop oder komplexes Projekt - unser Cloud VDS wächst mit Ihren Anforderungen.</p>
             <div class="row">
+                <!-- Server 1 start -->
                 <div class="col-md-3">
                     <div class="server-container card mb-4">
                         <div class="card-body">
@@ -65,6 +131,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Server 1 end -->
+
+                <!-- Server 2 start -->
                 <div class="col-md-3">
                     <div class="server-container card mb-4">
                         <div class="card-body">
@@ -78,6 +147,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Server 2 end -->
+
+                <!-- Server 3 start -->
                 <div class="col-md-3">
                     <div class="server-container card mb-4">
                         <div class="card-body">
@@ -91,6 +163,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Server 3 end -->
+
+                <!-- Server 4 start -->
                 <div class="col-md-3">
                     <div class="server-container card mb-4">
                         <div class="card-body">
@@ -104,76 +179,109 @@
                         </div>
                     </div>
                 </div>
+                <!-- Server 4 end -->
             </div>
         </div>
     </section>
+    <!-- Server Angebote Section end -->
 
+    <!-- Konfiguration Section start -->
     <section id="configuration" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center">Konfiguration</h2>
+            <h2 class="text-center">vServer Konfiguration</h2>
+            <p class="text-center">Passen Sie Ihren vServer nach Ihren Bedürfnissen an.</p>
             <form>
-                <div class="mb-3">
-                    <label for="os" class="form-label">Betriebssystem:</label>
-                    <select id="os" class="form-select">
-                        <option value="linux">Linux</option>
-                        <option value="windows">Windows</option>
-                    </select>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="os" class="form-label">Betriebssystem</label>
+                        <select class="form-select" id="os">
+                            <option selected>Wählen Sie...</option>
+                            <option value="1">Windows</option>
+                            <option value="2">Linux</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cpu" class="form-label">CPU</label>
+                        <select class="form-select" id="cpu">
+                            <option selected>Wählen Sie...</option>
+                            <option value="1">1 CPU</option>
+                            <option value="2">2 CPUs</option>
+                            <option value="4">4 CPUs</option>
+                            <option value="8">8 CPUs</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="duration" class="form-label">Zeitraum:</label>
-                    <select id="duration" class="form-select">
-                        <option value="1">1 Monat</option>
-                        <option value="12">12 Monate</option>
-                    </select>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="ram" class="form-label">RAM</label>
+                        <select class="form-select" id="ram">
+                            <option selected>Wählen Sie...</option>
+                            <option value="2">2GB</option>
+                            <option value="4">4GB</option>
+                            <option value="8">8GB</option>
+                            <option value="16">16GB</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="storage" class="form-label">Speicher</label>
+                        <select class="form-select" id="storage">
+                            <option selected>Wählen Sie...</option>
+                            <option value="10">10GB (SSD)</option>
+                            <option value="20">20GB (SSD)</option>
+                            <option value="40">40GB (SSD)</option>
+                            <option value="80">80GB (SSD)</option>
+                        </select>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Konfigurieren</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Konfigurieren</button>
+                </div>
             </form>
         </div>
     </section>
+    <!-- Konfiguration Section end -->
 
-    <section id="more-info-section" class="py-5">
+    <!-- Testimonials Section start -->
+    <section id="testimonials" class="py-5">
         <div class="container">
-            <button class="btn btn-info toggle-info">Weitere Informationen</button>
-            <div id="info-containers" class="info-containers mt-4">
-                <div class="info">
-                    <h4>vServer 1 Konfiguration</h4>
-                    <p>1 CPU, 2GB RAM, 10GB Speicher</p>
-                    <h4>Betriebssysteme</h4>
-                    <p>Windows/Linux</p>
-                    <h4>Vertragsinfos</h4>
-                    <p>1 Monat oder 12 Monate</p>
+            <h2 class="text-center">Kundenbewertungen</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">"Der beste Hosting-Service, den ich je benutzt habe. Hervorragender Support und hervorragende Leistung."</p>
+                            <h5 class="card-title">Max Mustermann</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <h4>vServer 2 Konfiguration</h4>
-                    <p>2 CPUs, 4GB RAM, 20GB Speicher</p>
-                    <h4>Betriebssysteme</h4>
-                    <p>Windows/Linux</p>
-                    <h4>Vertragsinfos</h4>
-                    <p>1 Monat oder 12 Monate</p>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">"Sehr zuverlässig und schnell. Perfekt für mein kleines Unternehmen."</p>
+                            <h5 class="card-title">Anna Müller</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <h4>vServer 3 Konfiguration</h4>
-                    <p>4 CPUs, 8GB RAM, 40GB Speicher</p>
-                    <h4>Betriebssysteme</h4>
-                    <p>Windows/Linux</p>
-                    <h4>Vertragsinfos</h4>
-                    <p>1 Monat oder 12 Monate</p>
-                </div>
-                <div class="info">
-                    <h4>vServer 4 Konfiguration</h4>
-                    <p>8 CPUs, 16GB RAM, 80GB Speicher</p>
-                    <h4>Betriebssysteme</h4>
-                    <p>Windows/Linux</p>
-                    <h4>Vertragsinfos</h4>
-                    <p>1 Monat oder 12 Monate</p>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">"Großartiger Service zu einem fairen Preis. Ich bin sehr zufrieden."</p>
+                            <h5 class="card-title">Hans Schmidt</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- Testimonials Section end -->
 
+    <!-- Footer start -->
     <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2024 vServer Hosting. Alle Rechte vorbehalten.</p>
+        <div class="container">
+            <p>&copy; 2024 vServer Hosting. Alle Rechte vorbehalten.</p>
+        </div>
     </footer>
+    <!-- Footer end -->
 
 </body>
 </html>
