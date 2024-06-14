@@ -1,38 +1,147 @@
-.App {
+/* Globale Stile */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Zentriert den Inhalt */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Header-Stile */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Server Frame-Stile */
+.server-frame {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.server-frame h4 {
+  margin-bottom: 10px;
+}
+
+/* Slider-Stile */
+.slider-container {
+  margin-bottom: 20px;
+}
+
+.slider-container label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.slider {
+  width: 100%;
+}
+
+/* OS-Auswahl-Stile */
+.os-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.os-selection label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  cursor: pointer;
+}
+
+/* Stile für Linux-Logo */
+.os-selection label input[value="Linux"] + img {
+  width: 100px; /* Breite des Linux-Logos */
+  height: 40px; /* Höhe des Linux-Logos */
+}
+
+/* Stile für Windows-Logo */
+.os-selection label input[value="Windows"] + img {
+  width: 150px; /* Breite des Windows-Logos */
+  height: 40px; /* Höhe des Windows-Logos */
+}
+
+/* Bestellbutton-Stile */
+.order-button {
+  background-color: #007bff;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.order-button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.order-button:active {
+  background-color: #00408a;
+}
+
+/* Zusammenfassungs-Stile */
+.summary {
+  margin-top: 30px;
+}
+
+.summary h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.summary p {
+  margin-bottom: 5px;
+}
+
+.aws-logo {
+  width: 30px; /* Breite des AWS-Logos */
+  height: 30px; /* Höhe des AWS-Logos */
+  margin-right: 5px;
+}
+
+/* Preconfigured Server Stile */
+.preconfigured-server {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.preconfigured-server h4 {
+  margin-bottom: 10px;
+}
+
+.preconfigured-server p {
+  margin-bottom: 5px;
+}
+
+/* Angleichung der Container */
+.server-frame {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
