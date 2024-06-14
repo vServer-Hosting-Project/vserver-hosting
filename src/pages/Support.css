@@ -1,0 +1,53 @@
+/* Support.css */
+
+/* Navbar-Stile */
+.custom-navbar {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .custom-link {
+    color: #fff;
+  }
+  
+  /* Hauptinhalt-Stile */
+  #support {
+    padding: 50px 0;
+  }
+  
+  .support-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chatbot-container {
+    animation: moveUpDown 3s ease infinite; /* Bewegt den Chatbot-Container alle 3 Sekunden nach oben und unten */
+  }
+  
+  /* Animation für Bewegung */
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Stile */
+  @media (max-width: 768px) {
+    .support-form {
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Fehler- und Erfolgsmeldungsstil */
+  .alert {
+    margin-top: 20px;
+  }
+  

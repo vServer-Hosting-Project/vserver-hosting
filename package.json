@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -35,5 +37,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vServer-Hosting-Project/vserver-hosting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vServer-Hosting-Project/vserver-hosting/issues"
+  },
+  "homepage": "https://github.com/vServer-Hosting-Project/vserver-hosting#readme"
 }
