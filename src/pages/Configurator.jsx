@@ -28,11 +28,13 @@ function Configurator({ addOrder }) {
   const [selectedOSVersionKleinster, setSelectedOSVersionKleinster] = useState('');
   const [selectedOSVersionGroesster, setSelectedOSVersionGroesster] = useState('');
   const [selectedOSVersionKonfigurator, setSelectedOSVersionKonfigurator] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorKleinster, setErrorKleinster] = useState('');
+  const [errorGroesster, setErrorGroesster] = useState('');
+  const [errorKonfigurator, setErrorKonfigurator] = useState('');
 
-  const handleOrder = (instanceType, os, osVersion) => {
+  const handleOrder = (instanceType, os, osVersion, setError) => {
     if (!osVersion) {
-      setErrorMessage('Bitte wählen Sie eine Betriebssystemversion aus.');
+      setError('Bitte wählen Sie eine Betriebssystemversion aus!');
       return;
     }
 
@@ -59,7 +61,7 @@ function Configurator({ addOrder }) {
         console.log('Order response:', data);
         console.log('Adding order:', { instanceType, os, osVersion, storage });
         addOrder({ instanceType, os, osVersion, storage });
-        setErrorMessage('');  // Clear error message on successful order
+        setError('');  // Clear error message on successful order
       })
       .catch(error => {
         console.error('Error creating Terraform file:', error);
@@ -160,6 +162,7 @@ function Configurator({ addOrder }) {
                     </select>
                   </div>
                 )}
+                {errorKleinster && <p className="error-message">{errorKleinster}</p>}
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: t2.micro</p>
@@ -174,9 +177,8 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionKleinster && <p>Betriebssystemversion: {selectedOSVersionKleinster}</p>}
                 </div>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster, setErrorKleinster)}>Bestellen</button>
                 </div>
               </div>
             </div>
@@ -253,6 +255,7 @@ function Configurator({ addOrder }) {
                     </select>
                   </div>
                 )}
+                {errorKonfigurator && <p className="error-message">{errorKonfigurator}</p>}
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: {selectedInstance.name}</p>
@@ -267,9 +270,8 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionKonfigurator && <p>Betriebssystemversion: {selectedOSVersionKonfigurator}</p>}
                 </div>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator, setErrorKonfigurator)}>Bestellen</button>
                 </div>
               </div>
             </div>
@@ -313,6 +315,7 @@ function Configurator({ addOrder }) {
                     </select>
                   </div>
                 )}
+                {errorGroesster && <p className="error-message">{errorGroesster}</p>}
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: c5.xlarge</p>
@@ -327,9 +330,8 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionGroesster && <p>Betriebssystemversion: {selectedOSVersionGroesster}</p>}
                 </div>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster, setErrorGroesster)}>Bestellen</button>
                 </div>
               </div>
             </div>
