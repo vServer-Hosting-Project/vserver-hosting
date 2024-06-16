@@ -5,7 +5,7 @@ import windowsLogo from '../assets/logos/windows.png';
 import awsLogo from '../assets/logos/aws.png';
 import { v4 as uuidv4 } from 'uuid';
 
-function Configurator() {
+function Configurator({ addOrder }) {
   const instanceOptions = [
     { name: 't2.micro', vCPUs: 1, RAM: 1 },
     { name: 't3.small', vCPUs: 2, RAM: 2 },
@@ -43,6 +43,7 @@ function Configurator() {
       .then(response => response.text())
       .then(data => {
         console.log('Order response:', data);
+        addOrder({ instanceType, os, osVersion, storage });
       })
       .catch(error => {
         console.error('Error creating Terraform file:', error);
@@ -99,20 +100,15 @@ function Configurator() {
 
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-lg custom-navbar">
-        {/* Navbar-Inhalt hier */}
-      </nav>
-
       <header className="header">
         <h3>vServer</h3>
       </header>
-
       <main className="configurator">
         <div className="row">
           <div className="col">
-            <div className="server-frame">
+            <div className="server-frame centered">
               <h4>vServer - min</h4>
-              <div className="preconfigured-server">
+              <div className="preconfigured-server no-background">
                 <p>Instanztyp: t2.micro</p>
                 <p>CPU: 1 Kern(e)</p>
                 <p>RAM: 1 GB</p>
@@ -151,20 +147,27 @@ function Configurator() {
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: t2.micro</p>
+                  <hr />
                   <p>CPU: 1 Kern(e)</p>
+                  <hr />
                   <p>RAM: 1 GB</p>
+                  <hr />
                   <p>Speicher: 100 GB SSD</p>
+                  <hr />
                   <p>Betriebssystem: {selectedOSKleinster}</p>
+                  <hr />
                   {selectedOSVersionKleinster && <p>Betriebssystemversion: {selectedOSVersionKleinster}</p>}
                 </div>
-                <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster)}>Bestellen</button>
+                <div className="button-container">
+                  <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster)}>Bestellen</button>
+                </div>
               </div>
             </div>
           </div>
           <div className="col">
-            <div className="server-frame">
+            <div className="server-frame centered">
               <h4>vServer Konfigurator</h4>
-              <div className="preconfigured-server">
+              <div className="preconfigured-server no-background">
                 <div className="slider-container">
                   <label htmlFor="cpu-slider">CPU (Kerne): {selectedInstance.vCPUs}</label>
                   <input
@@ -236,20 +239,27 @@ function Configurator() {
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: {selectedInstance.name}</p>
+                  <hr />
                   <p>CPU: {selectedInstance.vCPUs} Kern(e)</p>
+                  <hr />
                   <p>RAM: {selectedInstance.RAM} GB</p>
+                  <hr />
                   <p>Speicher: {storage} GB SSD</p>
+                  <hr />
                   <p>Betriebssystem: {selectedOSKonfigurator}</p>
+                  <hr />
                   {selectedOSVersionKonfigurator && <p>Betriebssystemversion: {selectedOSVersionKonfigurator}</p>}
                 </div>
-                <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator)}>Bestellen</button>
+                <div className="button-container">
+                  <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator)}>Bestellen</button>
+                </div>
               </div>
             </div>
           </div>
           <div className="col">
-            <div className="server-frame">
+            <div className="server-frame centered">
               <h4>vServer - max</h4>
-              <div className="preconfigured-server">
+              <div className="preconfigured-server no-background">
                 <p>Instanztyp: c5.xlarge</p>
                 <p>CPU: 4 Kerne</p>
                 <p>RAM: 8 GB</p>
@@ -288,22 +298,25 @@ function Configurator() {
                 <div className="summary">
                   <h4>Konfiguration:</h4>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: c5.xlarge</p>
+                  <hr />
                   <p>CPU: 4 Kerne</p>
+                  <hr />
                   <p>RAM: 8 GB</p>
+                  <hr />
                   <p>Speicher: 1000 GB SSD</p>
+                  <hr />
                   <p>Betriebssystem: {selectedOSGroesster}</p>
+                  <hr />
                   {selectedOSVersionGroesster && <p>Betriebssystemversion: {selectedOSVersionGroesster}</p>}
                 </div>
-                <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster)}>Bestellen</button>
+                <div className="button-container">
+                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster)}>Bestellen</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </main>
-
-      <footer>
-        <p>© 2024 v-Hosting</p>
-      </footer>
     </div>
   );
 }

@@ -21,10 +21,9 @@ app.post('/api/order', (req, res) => {
   const terraformConfig = `
 provider "aws" {
   region     = "eu-central-1"
-  access_key = "${process.env.AWS_ACCESS_KEY}"
-  secret_key = "${process.env.AWS_SECRET_KEY}"
-  token      = "${process.env.AWS_SESSION_TOKEN}"
-}
+  access_key = "###"
+  secret_key = "###"
+  token      = "###"}
 
 resource "aws_instance" "${resourceName}" {
   ami           = "${getAmiId(os, osVersion)}"
