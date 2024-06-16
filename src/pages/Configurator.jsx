@@ -28,22 +28,38 @@ function Configurator({ addOrder }) {
   const [selectedOSVersionKleinster, setSelectedOSVersionKleinster] = useState('');
   const [selectedOSVersionGroesster, setSelectedOSVersionGroesster] = useState('');
   const [selectedOSVersionKonfigurator, setSelectedOSVersionKonfigurator] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleOrder = (instanceType, os, osVersion) => {
+    if (!osVersion) {
+      setErrorMessage('Bitte wählen Sie eine Betriebssystemversion aus.');
+      return;
+    }
+
     const orderId = uuidv4();
     const fileName = `${orderId}.tf`;
+
+    const orderData = { instanceType, os, osVersion, storage, fileName };
+    console.log('Sending order data:', orderData);
 
     fetch('http://localhost:5000/api/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ instanceType, os, osVersion, storage, fileName })
+      body: JSON.stringify(orderData)
     })
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
       .then(data => {
         console.log('Order response:', data);
+        console.log('Adding order:', { instanceType, os, osVersion, storage });
         addOrder({ instanceType, os, osVersion, storage });
+        setErrorMessage('');  // Clear error message on successful order
       })
       .catch(error => {
         console.error('Error creating Terraform file:', error);
@@ -158,6 +174,7 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionKleinster && <p>Betriebssystemversion: {selectedOSVersionKleinster}</p>}
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
                   <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster)}>Bestellen</button>
                 </div>
@@ -250,6 +267,7 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionKonfigurator && <p>Betriebssystemversion: {selectedOSVersionKonfigurator}</p>}
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
                   <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator)}>Bestellen</button>
                 </div>
@@ -309,6 +327,7 @@ function Configurator({ addOrder }) {
                   <hr />
                   {selectedOSVersionGroesster && <p>Betriebssystemversion: {selectedOSVersionGroesster}</p>}
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div className="button-container">
                   <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster)}>Bestellen</button>
                 </div>

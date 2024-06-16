@@ -1,6 +1,8 @@
 import React from 'react';
 
 function Warenkorb({ orders }) {
+  console.log('Orders in cart:', orders); // Log orders in the cart
+
   return (
     <div className="container">
       <header className="header">

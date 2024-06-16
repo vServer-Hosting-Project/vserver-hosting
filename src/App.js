@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import Home from "./pages/Home";
 import Support from "./pages/Support";
 import Warenkorb from "./pages/Warenkorb";
@@ -10,7 +10,12 @@ function App() {
   const [orders, setOrders] = useState([]);
 
   const addOrder = (order) => {
-    setOrders([...orders, order]);
+    console.log('Adding order:', order);
+    setOrders((prevOrders) => {
+      const newOrders = [...prevOrders, order];
+      console.log('Orders in cart:', newOrders);
+      return newOrders;
+    });
   };
 
   return (

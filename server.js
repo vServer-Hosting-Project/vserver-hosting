@@ -23,7 +23,8 @@ provider "aws" {
   region     = "eu-central-1"
   access_key = "###"
   secret_key = "###"
-  token      = "###"}
+  token      = "###"
+}
 
 resource "aws_instance" "${resourceName}" {
   ami           = "${getAmiId(os, osVersion)}"
@@ -67,11 +68,11 @@ resource "aws_instance" "${resourceName}" {
 const getAmiId = (os, osVersion) => {
   const amiMap = {
     'Linux': {
-      'Ubuntu': 'ami-01e444924a2233b07', // Ubuntu 20.04 LTS in eu-central-1
-      'Red Hat Enterprise Linux': 'ami-007c3072df8eb6584', // Red Hat Enterprise Linux 8 in eu-central-1
-      'Debian': 'ami-042e6fdb154c830c5', // Debian 10 in eu-central-1
-      'CentOS': 'ami-0a4a70bd98c6d6442', // CentOS 7 in eu-central-1
-      'AlmaLinux': 'ami-07d0cf3af28718ef8' // AlmaLinux 8 in eu-central-1
+      'Ubuntu 20.04 LTS': 'ami-01e444924a2233b07', // Ubuntu 20.04 LTS in eu-central-1
+      'Red Hat Enterprise Linux 8': 'ami-007c3072df8eb6584', // Red Hat Enterprise Linux 8 in eu-central-1
+      'Debian 10': 'ami-042e6fdb154c830c5', // Debian 10 in eu-central-1
+      'CentOS 7': 'ami-0a4a70bd98c6d6442', // CentOS 7 in eu-central-1
+      'AlmaLinux 8': 'ami-07d0cf3af28718ef8' // AlmaLinux 8 in eu-central-1
     },
     'Windows': {
       'Windows Server 2016': 'ami-00fca5fcad9817075', // Windows Server 2016 in eu-central-1
