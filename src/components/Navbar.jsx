@@ -1,9 +1,19 @@
-// Navbar.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import firmaLogo from '../assets/images/firma.png';
 
 function Navbar({ onLoginOpen, onRegisterOpen }) {
+  // Zustand hinzufügen
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Funktion zum Umschalten des Anmeldestatus
+  const toggleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+    if (!isLoggedIn) {
+      onLoginOpen();
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg custom-navbar">
       <Link className="navbar-brand" to="/">
@@ -29,15 +39,14 @@ function Navbar({ onLoginOpen, onRegisterOpen }) {
               Hilfe & Support
             </Link>
           </li>
-          <li className="nav-item"></li>
           <li className="nav-item">
             <Link className="nav-link custom-link" to="/warenkorb" id="warenkorb-link">
               Warenkorb
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link custom-link" to="#" onClick={onLoginOpen}>
-              Login
+            <Link className="nav-link custom-link" to="#" onClick={toggleLogin}>
+              {isLoggedIn ? 'Logout' : 'Login'}
             </Link>
           </li>
         </ul>
