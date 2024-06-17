@@ -5,6 +5,8 @@ import Warenkorb from "./pages/Warenkorb";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
+import Paypal from "./pages/Paypal.jsx";
+
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -21,6 +23,7 @@ function App() {
         <Route path="/support" element={<Support />} />
         <Route path="/warenkorb" element={<Warenkorb orders={orders} />} />
         <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
+        <Route path="/paypal" element={<Paypal />} />
       </Routes>
     </BrowserRouter>
   );
