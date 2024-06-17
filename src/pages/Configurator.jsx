@@ -112,7 +112,7 @@ function Configurator({ addOrder }) {
   };
 
   const osVersions = {
-    Linux: ['Ubuntu 20.04 LTS', 'Red Hat Enterprise Linux 8', 'Debian 10', 'SUSE Linux Enterprise Server 15 SP5', 'AlmaLinux 8'],
+    Linux: ['Ubuntu 20.04 LTS', 'Red Hat Enterprise Linux 8', 'Debian 10', 'SUSE Linux Enterprise Server 15 SP5', 'Amazon Linux 2'],
     Windows: ['Windows Server 2016', 'Windows Server 2019', 'Windows Server 2022']
   };
 
@@ -130,7 +130,7 @@ function Configurator({ addOrder }) {
                 <p>Instanztyp: t2.micro</p>
                 <p>CPU: 1 Kern(e)</p>
                 <p>RAM: 1 GB</p>
-                <p>Speicher: 100 GB</p>
+                <p>Speicher: 30 GB</p>
                 <div className="os-selection">
                   <label>
                     <input
@@ -171,7 +171,7 @@ function Configurator({ addOrder }) {
                   <hr />
                   <p>RAM: 1 GB</p>
                   <hr />
-                  <p>Speicher: 100 GB SSD</p>
+                  <p>Speicher: 30 GB SSD</p>
                   <hr />
                   <p>Betriebssystem: {selectedOSKleinster}</p>
                   <hr />

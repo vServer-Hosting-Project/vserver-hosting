@@ -7,7 +7,7 @@ import ubuntuLogo from '../assets/logos/ubuntu.png';
 import redHatLogo from '../assets/logos/redhat.png';
 import debianLogo from '../assets/logos/debian.png';
 import suseLogo from '../assets/logos/suse.png';
-import almalinuxLogo from '../assets/logos/almalinux.png';
+import amazonLogo from '../assets/logos/amazon.png';
 
 function Home() {
   return (
@@ -40,7 +40,7 @@ function Home() {
             </p>
             <hr />
             <p>
-              <strong>Vielfältige Betriebssysteme:</strong> Wählen Sie aus einer Vielzahl von Betriebssystemen, einschließlich Windows Server 2016, 2019 und 2022 sowie Ubuntu, Red Hat Enterprise Linux, Debian, CentOS und AlmaLinux. So können Sie sicherstellen, dass Ihr vServer perfekt zu Ihrer IT-Umgebung passt.
+              <strong>Vielfältige Betriebssysteme:</strong> Wählen Sie aus einer Vielzahl von Betriebssystemen, einschließlich Windows Server 2016, 2019 und 2022 sowie Ubuntu, Red Hat Enterprise Linux, Debian, Suse und Amazon Linux 2. So können Sie sicherstellen, dass Ihr vServer perfekt zu Ihrer IT-Umgebung passt.
             </p>
             <hr />
             <p>
@@ -139,8 +139,8 @@ function Home() {
                 <p>SUSE Linux Enterprise Server 15 SP5</p>
               </div>
               <div className="os-item">
-                <img src={almalinuxLogo} alt="AlmaLinux 8" className="os-logo" />
-                <p>AlmaLinux 8</p>
+                <img src={amazonLogo} alt="Amazon Linux 2" className="os-logo" />
+                <p>Amazon Linux 2</p>
               </div>
             </div>
           </div>

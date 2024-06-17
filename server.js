@@ -72,7 +72,7 @@ const getAmiId = (os, osVersion) => {
       'Red Hat Enterprise Linux': 'ami-007c3072df8eb6584', // Red Hat Enterprise Linux 8 in eu-central-1
       'Debian': 'ami-042e6fdb154c830c5', // Debian 10 in eu-central-1
       'Suse': 'ami-0a8d4ba68a33e8421', // SUSE Linux Enterprise Server 15 SP5 in eu-central-1
-      'AlmaLinux': 'ami-07d0cf3af28718ef8' // AlmaLinux 8 in eu-central-1
+      'Amazon Linux': 'ami-00cf59bc9978eb266' // Amazon Linux 2 in eu-central-1
     },
     'Windows': {
       'Windows Server 2016': 'ami-00fca5fcad9817075', // Windows Server 2016 in eu-central-1
