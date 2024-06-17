@@ -6,7 +6,7 @@ import windowsServer2022Logo from '../assets/logos/windows2022.png';
 import ubuntuLogo from '../assets/logos/ubuntu.png';
 import redHatLogo from '../assets/logos/redhat.png';
 import debianLogo from '../assets/logos/debian.png';
-import centosLogo from '../assets/logos/centos.png';
+import suseLogo from '../assets/logos/suse.png';
 import almalinuxLogo from '../assets/logos/almalinux.png';
 
 function Home() {
@@ -135,8 +135,8 @@ function Home() {
                 <p>Debian 10</p>
               </div>
               <div className="os-item">
-                <img src={centosLogo} alt="CentOS 7" className="os-logo" />
-                <p>CentOS 7</p>
+                <img src={suseLogo} alt="SUSE Linux Enterprise Server 15 SP5" className="os-logo" />
+                <p>SUSE Linux Enterprise Server 15 SP5</p>
               </div>
               <div className="os-item">
                 <img src={almalinuxLogo} alt="AlmaLinux 8" className="os-logo" />

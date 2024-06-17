@@ -112,7 +112,7 @@ function Configurator({ addOrder }) {
   };
 
   const osVersions = {
-    Linux: ['Ubuntu 20.04 LTS', 'Red Hat Enterprise Linux 8', 'Debian 10', 'CentOS 7', 'AlmaLinux 8'],
+    Linux: ['Ubuntu 20.04 LTS', 'Red Hat Enterprise Linux 8', 'Debian 10', 'SUSE Linux Enterprise Server 15 SP5', 'AlmaLinux 8'],
     Windows: ['Windows Server 2016', 'Windows Server 2019', 'Windows Server 2022']
   };
 
