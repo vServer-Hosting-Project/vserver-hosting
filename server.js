@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const { exec } = require('child_process');
-const { v4: uuidv4 } = require('uuid');
+const { v1: uuidv1 } = require('uuid');
 
 const app = express();
 const port = 5000;
@@ -14,7 +14,7 @@ app.use(cors());
 app.post('/api/order', (req, res) => {
   const { instanceType, os, osVersion, storage, fileName } = req.body;
 
-  const orderId = uuidv4();
+  const orderId = uuidv1();
   const resourceName = `vServer_${orderId.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 16)}`;
   const orderDir = path.join(__dirname, 'bestellungen', orderId);
 

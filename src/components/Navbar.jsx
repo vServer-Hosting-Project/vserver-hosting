@@ -1,8 +1,9 @@
+// Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import firmaLogo from '../assets/images/firma.png';
 
-function Navbar() {
+function Navbar({ onLoginOpen, onRegisterOpen }) {
   return (
     <nav className="navbar navbar-expand-lg custom-navbar">
       <Link className="navbar-brand" to="/">
@@ -25,7 +26,7 @@ function Navbar() {
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <Link className="nav-link custom-link" to="/support" id="support-link">
-              Hilfe &amp; Support
+              Hilfe & Support
             </Link>
           </li>
           <li className="nav-item"></li>
@@ -35,14 +36,9 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <a
-              className="nav-link custom-link"
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal"
-            >
+            <Link className="nav-link custom-link" to="#" onClick={onLoginOpen}>
               Login
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
