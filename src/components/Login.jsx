@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import '../assets/style/Login.css' // Stellen Sie sicher, dass der Pfad zu Ihrer CSS-Datei korrekt ist
-import UserPool from './UserPool';
-import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
+import { AccountContext } from './Accounts';
 
 Modal.setAppElement('#root') // set the root element for the modal
 
@@ -10,32 +9,18 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { authenticate } = useContext(AccountContext);
+
   const Submit = (event) => {
     event.preventDefault();
    
-    const user = new CognitoUser({
-      Username: email,
-      Pool: UserPool
-    });
-  
-    const authDetails = new AuthenticationDetails({
-      Username: email,
-      Password: password
-    });
-
-    user.authenticateUser(authDetails, {
-      onSuccess: (data) => {
-        console.log('authentication successful', data);
-        // Hier können Sie den Erfolg des Authentication-Prozess behandeln
-      },
-      onFailure: (err) => {
-        console.error('authentication failed', err);
-        // Hier können Sie den Fehlern des Authentication-Prozess behandeln
-      },
-      newPasswordRequired: (data) => {
-        console.log('new password required', data);
-        // Hier können Sie den Fall implementieren, wenn ein neues Passwort erforderlich ist
-      }
+    authenticate(email, password, onRequestClose)
+    .then(data => {
+      console.log("Logged in!", data);
+      onRequestClose();
+    })
+    .catch(err => {
+      console.error("failed to login", err);
     });
   };
 

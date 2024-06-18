@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import firmaLogo from '../assets/images/firma.png';
+import { AccountContext } from './Accounts';
 
-function Navbar({ onLoginOpen, onRegisterOpen }) {
-  // Zustand hinzufügen
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Funktion zum Umschalten des Anmeldestatus
-  const toggleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
-    if (!isLoggedIn) {
-      onLoginOpen();
-    }
-  };
+function Navbar({ onLoginOpen }) {
+  const { isLoggedIn, logout } = useContext(AccountContext);
 
   return (
     <nav className="navbar navbar-expand-lg custom-navbar">
@@ -45,9 +37,15 @@ function Navbar({ onLoginOpen, onRegisterOpen }) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link custom-link" to="#" onClick={toggleLogin}>
-              {isLoggedIn ? 'Logout' : 'Login'}
-            </Link>
+            {isLoggedIn ? (
+              <Link className="nav-link custom-link" to="#" onClick={logout}>
+                Logout
+              </Link>
+            ) : (
+              <Link className="nav-link custom-link" to="#" onClick={onLoginOpen}>
+                Login
+              </Link>
+            )}
           </li>
         </ul>
       </div>

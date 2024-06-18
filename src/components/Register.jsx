@@ -22,6 +22,7 @@ function Register({ isOpen, onRequestClose, onLoginOpen }) {
         console.error(err);
       } else {
         console.log(data);
+        onRequestClose();
       }
     })
   };
