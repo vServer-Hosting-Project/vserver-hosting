@@ -42,7 +42,7 @@ function App() {
   return (
     <Account>
     <BrowserRouter>
-    {/* <Status /> */}
+    <Status />
       <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
       <Routes>
         <Route path="/" element={<Home />} />

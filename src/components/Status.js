@@ -21,8 +21,6 @@ const Status = () => {
             setStatus(false);
         }
     }, [isLoggedIn]) // Fügen Sie isLoggedIn als Abhängigkeit hinzu
-
-    return <div>{status ? "Your are logged in" : "Please login"}</div>;
 };
 
 export default Status;
