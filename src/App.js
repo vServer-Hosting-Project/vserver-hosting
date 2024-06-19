@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import Home from "./pages/Home";
 import Support from "./pages/Support";
@@ -16,26 +15,6 @@ import Status from './components/Status';
 
 function App() {
   const [orders, setOrders] = useState([]);
-  const [showLogin, setShowLogin] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
-
-  const openLogin = () => {
-    setShowLogin(true);
-    setShowRegister(false);
-  };
-
-  const closeLogin = () => {
-    setShowLogin(false);
-  };
-
-  const openRegister = () => {
-    setShowLogin(false);
-    setShowRegister(true);
-  };
-
-  const closeRegister = () => {
-    setShowRegister(false);
-  };
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
