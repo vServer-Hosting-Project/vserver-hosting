@@ -1,8 +1,8 @@
-import { CognitoUserPool } from "amazon-cognito-identity-js";
+import { CognitoUserPool, CookieStorage } from "amazon-cognito-identity-js";
 
 const poolData = {
-    UserPoolId: "eu-central-1_5VFkp7Age",
-    ClientId: "34fdl3rr8r40qk2p615mepdt12",
+    UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+    ClientId: process.env.REACT_APP_CLIENT_ID,
 };
 
 export default new CognitoUserPool(poolData);
