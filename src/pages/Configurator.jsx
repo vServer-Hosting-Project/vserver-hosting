@@ -44,7 +44,7 @@ function Configurator({ addOrder }) {
     const orderData = { instanceType, os, osVersion, storage, fileName };
     console.log('Sending order data:', orderData);
 
-    fetch('http://localhost:5000/api/order', {
+    fetch('https://nextgenhosting.de/api/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
