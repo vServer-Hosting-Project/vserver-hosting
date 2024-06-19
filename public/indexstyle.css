@@ -1,17 +1,4 @@
 
-.custom-navbar{
-    background-color: #48ff00;
-  }
-  
-  .nav-link{
-    color:white;
-    font-weight: bold;
-  }
-
-  .navbar-nav {
-    margin-right: 20px;
-  }
-  
 /* Reset some default styles */
 body, h1, h2, h3, p, select, button {
     margin: 0;
