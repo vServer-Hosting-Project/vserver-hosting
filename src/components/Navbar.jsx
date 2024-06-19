@@ -36,13 +36,23 @@ function Navbar({ onLoginOpen }) {
               Warenkorb
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item dropdown align-middle">
             {isLoggedIn ? (
-              <Link className="nav-link custom-link" to="#" onClick={logout}>
-                Logout
-              </Link>
-            ) : (
-              <Link className="nav-link custom-link" to="#" onClick={onLoginOpen}>
+              <>
+                <button className="dropdown-toggle align-middle">
+                  Konto
+                </button>
+                <div className="dropdown-menu">
+                  <Link className="dropdown-item" to="/settings">
+                    Einstellungen
+                  </Link>
+                  <Link className="dropdown-item" to="#" onClick={logout}>
+                    Logout
+                  </Link>
+                </div>
+              </>
+            ) : ( 
+              <Link className="nav-link custom-link align-middle" to="#" onClick={onLoginOpen}>
                 Login
               </Link>
             )}
