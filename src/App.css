@@ -290,3 +290,8 @@ body {
   font-size: 12px;
   margin-top: 5px;
 }
+
+.Paypal {
+  color: blue;
+  label: checkout;
+}

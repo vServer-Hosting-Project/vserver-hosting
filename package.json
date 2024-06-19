@@ -15,7 +15,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,22 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "nodemon": "^3.1.3"
-  },
-  
-{
-  "name": "paypal-standard-integration",
-  "description": "Sample Node.js web app to integrate PayPal Standard Checkout for online payments",
-   "version": "1.0.0",
-  "main": "./src/pages/paypal.jsx",
-  "type": "module",
-  "scripts": {
- "start": "./src/pages/paypal.jsx",
-  },
-  "dependencies": {
-  "dotenv": "^16.3.1",
-  "express": "^4.18.2",
- "node-fetch": "^3.3.2"
- }
-}
+  }
 }

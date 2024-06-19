@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+<script src="https://www.paypal.com/sdk/js?client-id=<AdwJzCiFVqAx0VBAL7gMcEsht0PNGhYv8SclCeC9WImGLKYmMbIK-KCnm0cf0AiL2RUAnhA0kmX3uotT>&currency=EURO"></script>
 // Renders errors or successfull transactions on the screen.
 function Message({ content }) {
   return <p>{content}</p>;
 }
-
 function Paypal() {
   const initialOptions = {
-    "client-id": "test",
+    "client-id": "AdwJzCiFVqAx0VBAL7gMcEsht0PNGhYv8SclCeC9WImGLKYmMbIK",
     "enable-funding": "venmo",
     "disable-funding": "",
-    country: "US",
+    country: "GER",
     currency: "EUR",
     "data-page-type": "product-details",
     components: "buttons",
     "data-sdk-integration-source": "developer-studio",
   };
-
+  
   const [message, setMessage] = useState("");
 
   return (
@@ -122,9 +121,11 @@ function Paypal() {
         />
       </PayPalScriptProvider>
       <Message content={message} />
+
+
     </div>
-  );
+  )
 }
 
-export default Paypal; 
+export default Paypal
 
