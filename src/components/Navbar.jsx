@@ -32,6 +32,11 @@ function Navbar({ onLoginOpen }) {
             </Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link custom-link" to="/konfigurator" id="konfigurator-link">
+              Konfigurator
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link custom-link" to="/warenkorb" id="warenkorb-link">
               Warenkorb
             </Link>

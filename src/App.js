@@ -8,12 +8,34 @@ import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
 import Login from './components/Login';
 import Register from './components/Register';
+import Login from './components/Login';
+import Register from './components/Register';
 import { Account } from './components/Accounts';
 import Status from './components/Status';
 
 
 function App() {
   const [orders, setOrders] = useState([]);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+
+  const openLogin = () => {
+    setShowLogin(true);
+    setShowRegister(false);
+  };
+
+  const closeLogin = () => {
+    setShowLogin(false);
+  };
+
+  const openRegister = () => {
+    setShowLogin(false);
+    setShowRegister(true);
+  };
+
+  const closeRegister = () => {
+    setShowRegister(false);
+  };
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 
