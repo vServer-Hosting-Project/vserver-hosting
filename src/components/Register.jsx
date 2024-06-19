@@ -1,11 +1,32 @@
-// Register.js
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-import '../assets/style/Login.css' // Stellen Sie sicher, dass der Pfad zu Ihrer CSS-Datei korrekt ist
+import '../assets/style/Login.css'
+import UserPool from './UserPool';
 
-Modal.setAppElement('#root') // set the root element for the modal
+Modal.setAppElement('#root')
 
 function Register({ isOpen, onRequestClose, onLoginOpen }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Die Passwörter stimmen nicht überein.");
+      return;
+    }
+      UserPool.signUp(email, password, [], null, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+        onRequestClose();
+      }
+    })
+  };
+
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="login-modal">
       <div className="container">
@@ -13,22 +34,22 @@ function Register({ isOpen, onRequestClose, onLoginOpen }) {
           <div className="title">
             <span>Konto erstellen</span>
           </div>
-          <form action="#">
+          <form action="#" onSubmit={handleSubmit}>
             <div className="row">
               <i className="fas fa-user" />
-              <input type="text" placeholder="Name" required="" />
+              <input value={name} onChange={(event) => setName(event.target.value)} type="text" placeholder="Name" required="" />
             </div>
             <div className="row">
               <i className="fas fa-envelope" />
-              <input type="text" placeholder="Email oder Telefon" required="" />
+              <input value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
             </div>
             <div className="row">
               <i className="fas fa-lock" />
-              <input type="password" placeholder="Passwort" required="" />
+              <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
             </div>
             <div className="row">
               <i className="fas fa-lock" />
-              <input type="password" placeholder="Passwort bestätigen" required="" />
+              <input value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Passwort bestätigen" required="" />
             </div>
             <div className="row button">
               <input type="submit" defaultValue="Konto erstellen" />
@@ -43,4 +64,4 @@ function Register({ isOpen, onRequestClose, onLoginOpen }) {
   );
 }
 
-export default Register;
+export default Register

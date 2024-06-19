@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import Home from "./pages/Home";
 import Support from "./pages/Support";
@@ -8,6 +7,9 @@ import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
 import Login from './components/Login';
 import Register from './components/Register';
+import { Account } from './components/Accounts';
+import Status from './components/Status';
+
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -37,7 +39,9 @@ function App() {
   };
 
   return (
+    <Account>
     <BrowserRouter>
+    <Status />
       <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -48,6 +52,7 @@ function App() {
       <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
       <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
     </BrowserRouter>
+    </Account>
   );
 }
 
