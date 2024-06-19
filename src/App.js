@@ -10,7 +10,6 @@ import Register from './components/Register';
 import { Account } from './components/Accounts';
 import Status from './components/Status';
 
-
 function App() {
   const [orders, setOrders] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
@@ -38,20 +37,29 @@ function App() {
     setOrders([...orders, order]);
   };
 
+  const removeOrder = (index) => {
+    setOrders(orders.filter((_, i) => i !== index));
+  };
+
+  const submitOrders = () => {
+    console.log('Bestellungen abschicken:', orders);
+    setOrders([]);
+  };
+
   return (
     <Account>
-    <BrowserRouter>
-    <Status />
-      <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/warenkorb" element={<Warenkorb orders={orders} />} />
-        <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
-      </Routes>
-      <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
-      <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Status />
+        <Navbar onLoginOpen={openLogin} cartCount={orders.length} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/warenkorb" element={<Warenkorb orders={orders} removeOrder={removeOrder} submitOrders={submitOrders} />} />
+          <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
+        </Routes>
+        <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
+        <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
+      </BrowserRouter>
     </Account>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import firmaLogo from '../assets/images/firma.png';
 import { AccountContext } from './Accounts';
 
-function Navbar({ onLoginOpen }) {
+function Navbar({ onLoginOpen, cartCount }) {
   const { isLoggedIn, logout } = useContext(AccountContext);
 
   return (
@@ -36,9 +36,12 @@ function Navbar({ onLoginOpen }) {
               Konfigurator
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item position-relative">
             <Link className="nav-link custom-link" to="/warenkorb" id="warenkorb-link">
               Warenkorb
+              {cartCount > 0 && (
+                <span className="badge badge-danger cart-count">{cartCount}</span>
+              )}
             </Link>
           </li>
           <li className="nav-item dropdown align-middle">
@@ -56,7 +59,7 @@ function Navbar({ onLoginOpen }) {
                   </Link>
                 </div>
               </>
-            ) : ( 
+            ) : (
               <Link className="nav-link custom-link align-middle" to="#" onClick={onLoginOpen}>
                 Login
               </Link>
