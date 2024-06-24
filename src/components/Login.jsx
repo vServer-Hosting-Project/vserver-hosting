@@ -1,20 +1,35 @@
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
-import '../assets/style/Login.css' // Stellen Sie sicher, dass der Pfad zu Ihrer CSS-Datei korrekt ist
+import '../assets/style/Login.css'
 import { AccountContext } from './Accounts';
 
-Modal.setAppElement('#root') // set the root element for the modal
+Modal.setAppElement('#root')
 
 function Login({ isOpen, onRequestClose, onRegisterOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState ("");
+  const [inputError, setInputError] = useState({
+    email: false,
+    password: false
+  });
 
   const { authenticate } = useContext(AccountContext);
 
   const Submit = (event) => {
     event.preventDefault();
-   
+    const newInputError = {
+      email: email === "",
+      password: password === ""
+    };
+    setInputError(newInputError);
+    if (Object.values(newInputError).some(error => error)) {
+      setTimeout(() => setInputError({
+        email: false,
+        password: false
+      }), 3000);
+      return;
+    }
     authenticate(email, password, onRequestClose)
     .then(data => {
       console.log("Logged in!", data);
@@ -22,7 +37,7 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
     })
     .catch(err => {
       console.error("failed to login", err);
-        setError("Benutzerdaten stimmmen nicht überein.")
+      setError("Benutzerdaten stimmen nicht überein.")
     });
   };
 
@@ -36,11 +51,11 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
           <form action="#" onSubmit={Submit}>
             <div className="row">
               <i className="fas fa-user" />
-              <input value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
+              <input className={inputError.email ? 'error' : ''} value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
             </div>
             <div className="row">
               <i className="fas fa-lock" />
-              <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
+              <input className={inputError.password ? 'error' : ''} value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
             </div>
             <div className="pass">
               <a href="#">Passwort vergessen.</a>
@@ -59,4 +74,4 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
   );
 }
 
-export default Login;
+export default Login

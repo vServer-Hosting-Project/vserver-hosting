@@ -74,8 +74,25 @@ const Account = (props) => {
     }
   };
 
+  const confirm = async (code) => {
+    const user = Pool.getCurrentUser();
+    if (user) {
+      return await new Promise((resolve, reject) => {
+        user.confirmRegistration(code, true, function(err, result) {
+          if (err) {
+            console.error(err);
+            reject(err);
+          } else {
+            console.log('confirmation successful');
+            resolve(result);
+          }
+        });
+      });
+    }
+  };
+
   return (
-    <AccountContext.Provider value={{ authenticate, getSession, logout, isLoggedIn }}>
+    <AccountContext.Provider value={{ authenticate, getSession, logout, isLoggedIn, confirm }}>
       {props.children}
     </AccountContext.Provider>
   );

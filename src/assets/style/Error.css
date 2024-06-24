@@ -1,3 +1,41 @@
+.success-container {
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 255, 0, 0.5); /* Durchsichtiger grüner Hintergrund */
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  font-family: Arial, sans-serif;
+}
+
+
+
+input.error {
+  border-color: red !important;
+}
+
+/* Ändern Sie die Farbe des Platzhaltertextes auf Rot für Eingabefelder mit Fehlern */
+input.error::placeholder {
+  color: red !important;
+  opacity: 1; /* Firefox */
+}
+
+/* Internet Explorer 10-11 */
+input.error:-ms-input-placeholder {
+  color: red !important;
+}
+
+/* Microsoft Edge */
+input.error::-ms-input-placeholder {
+  color: red !important;
+}
+
+
 .password-requirements {
   list-style-type: none;
   padding: 0;

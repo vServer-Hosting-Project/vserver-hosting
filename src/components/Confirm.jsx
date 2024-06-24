@@ -8,6 +8,7 @@ Modal.setAppElement('#root')
 function Confirm({ isOpen, onRequestClose }) {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const { confirm } = useContext(AccountContext);
 
   const onSubmit = (event) => {
@@ -22,7 +23,8 @@ function Confirm({ isOpen, onRequestClose }) {
       .then(data => {
         console.log("Code confirmed!", data);
         setError(""); 
-        onRequestClose();
+        setSuccess(true);
+        setTimeout(onRequestClose, 2000);
       })
       .catch(err => {
         console.error("Failed to confirm code", err);
@@ -31,7 +33,8 @@ function Confirm({ isOpen, onRequestClose }) {
   };
   
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="login-modal">      <div className="container">
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="login-modal">      
+      <div className="container">
         <div className="wrapper">
           <div className="title">
             <span>Code bestätigen</span>
@@ -47,6 +50,7 @@ function Confirm({ isOpen, onRequestClose }) {
           </form>
         </div>
         {error && <div className="error-container"><span className="error">{error}</span></div>}
+        {success && <div className="success-container"><span className="success">Code erfolgreich bestätigt!</span></div>}
       </div>
     </Modal>
   );
