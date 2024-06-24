@@ -49,13 +49,24 @@ function Warenkorb({ orders, removeOrder, clearOrders }) {
   };
 
   const submitOrders = () => {
-    console.log('Sending orders:', orders);  // Hinzugefügt zur Überprüfung der gesendeten Daten
-    fetch('http://localhost:5000/api/order', {
+    // Wir nehmen den ersten Auftrag aus dem Warenkorb als Beispiel.
+    const order = orders[0];
+    const orderData = {
+      instanceType: order.instanceType,
+      os: order.os,
+      osVersion: order.osVersion,
+      storage: order.storage,
+      fileName: 'myOrder.tf' // Beispielwert; Sie können dies dynamisch gestalten
+    };
+
+    console.log('Sending order data:', orderData);
+
+    fetch('https://nextgenhosting.de/api/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(orders),
+      body: JSON.stringify(orderData),
     })
     .then(response => {
       if (!response.ok) {
@@ -65,11 +76,10 @@ function Warenkorb({ orders, removeOrder, clearOrders }) {
     })
     .then(data => {
       console.log('Success:', data);
-      clearOrders();  // Leert den Warenkorb nach erfolgreicher Bestellung
+      clearOrders(); // Leert den Warenkorb nach erfolgreicher Bestellung
     })
     .catch((error) => {
       console.error('Error:', error);
-      // Optional: Handle error (e.g., show an error message)
     });
   };
 
