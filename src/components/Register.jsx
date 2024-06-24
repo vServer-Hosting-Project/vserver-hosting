@@ -77,21 +77,21 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
             <span>Konto erstellen</span>
           </div>
           <form action="#" onSubmit={handleSubmit}>
-            <div className="row">
+            <div className={`row ${inputError.name ? 'error' : ''}`}>
               <i className="fas fa-user" />
-              <input className={inputError.name ? 'error' : ''} value={name} onChange={(event) => setName(event.target.value)} type="text" placeholder="Name" required="" />
+              <input value={name} onChange={(event) => setName(event.target.value)} type="text" placeholder="Name" required="" />
             </div>
-            <div className="row">
+            <div className={`row ${inputError.email ? 'error' : ''}`}>
               <i className="fas fa-envelope" />
-              <input className={inputError.email ? 'error' : ''} value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
+              <input value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
             </div>
-            <div className="row">
+            <div className={`row ${inputError.password ? 'error' : ''}`}>
               <i className="fas fa-lock" />
-              <input className={inputError.password ? 'error' : ''} value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
+              <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
             </div>
-            <div className="row">
+            <div className={`row ${inputError.confirmPassword ? 'error' : ''}`}>
               <i className="fas fa-lock" />
-              <input className={inputError.confirmPassword ? 'error' : ''} value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Passwort bestätigen" required="" />
+              <input value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Passwort bestätigen" required="" />
             </div>
             <ul className="password-requirements">
               <li className={passwordError.length ? "valid" : ""}>- 8 Zeichen</li>

@@ -75,12 +75,13 @@ const Account = (props) => {
   };
 
   const confirm = async (code) => {
+    console.log('confirm function in Account.js is called with code:', code);
     const user = Pool.getCurrentUser();
     if (user) {
       return await new Promise((resolve, reject) => {
         user.confirmRegistration(code, true, function(err, result) {
           if (err) {
-            console.error(err);
+            console.error('Error during confirmation');
             reject(err);
           } else {
             console.log('confirmation successful');

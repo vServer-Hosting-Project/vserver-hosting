@@ -49,13 +49,13 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
             <span>Login</span>
           </div>
           <form action="#" onSubmit={Submit}>
-            <div className="row">
+            <div className={`row ${inputError.email ? 'error' : ''}`}>
               <i className="fas fa-user" />
-              <input className={inputError.email ? 'error' : ''} value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
+              <input value={email} onChange={(event) => setEmail(event.target.value)} type="text" placeholder="Email" required="" />
             </div>
-            <div className="row">
+            <div className={`row ${inputError.password ? 'error' : ''}`}>
               <i className="fas fa-lock" />
-              <input className={inputError.password ? 'error' : ''} value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
+              <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Passwort" required="" />
             </div>
             <div className="pass">
               <a href="#">Passwort vergessen.</a>

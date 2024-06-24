@@ -19,6 +19,7 @@ function Confirm({ isOpen, onRequestClose }) {
       return;
     }
   
+    console.log('Calling confirm function in Confirm.jsx with code:', code);
     confirm(code)
       .then(data => {
         console.log("Code confirmed!", data);
