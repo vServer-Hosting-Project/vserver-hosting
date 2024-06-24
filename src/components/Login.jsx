@@ -8,6 +8,7 @@ Modal.setAppElement('#root') // set the root element for the modal
 function Login({ isOpen, onRequestClose, onRegisterOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState ("");
 
   const { authenticate } = useContext(AccountContext);
 
@@ -21,6 +22,7 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
     })
     .catch(err => {
       console.error("failed to login", err);
+        setError("Benutzerdaten stimmmen nicht überein.")
     });
   };
 
@@ -50,6 +52,7 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
             Kein Konto? <a href="#" onClick={(event) => { event.preventDefault(); onRequestClose(); setTimeout(onRegisterOpen, 0); }}>Konto erstellen</a>
             </div>
           </form>
+          {error && <div className='error-container'><span className="error">{error}</span></div>}
         </div>
       </div>
     </Modal>
