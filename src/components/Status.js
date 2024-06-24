@@ -3,24 +3,23 @@ import { AccountContext } from "./Accounts";
 
 const Status = () => {
     const [status, setStatus] = useState(false);
-
     const { getSession, isLoggedIn } = useContext(AccountContext);
 
     useEffect(() => {
-        if (isLoggedIn) {
-            getSession()
+        if (isLoggedIn) { // Wenn der Benutzer eingeloggt ist
+            getSession() // Ruft die aktuelle Sitzung ab
             .then(session => {
-                console.log("Session", session);
-                setStatus(true);
+                console.log("Session", session); // Loggt die Sitzungsdaten
+                setStatus(true); // Setzt den Status auf true
             })
             .catch(err => {
-                console.error("Failed to get session", err);
-                setStatus(false);
+                console.error("Failed to get session", err); // Loggt den Fehler, wenn das Abrufen der Sitzung fehlschlägt
+                setStatus(false); // Setzt den Status auf false
             });
-        } else {
-            setStatus(false);
+        } else { // Wenn der Benutzer nicht eingeloggt ist
+            setStatus(false); // Setzt den Status auf false
         }
-    }, [isLoggedIn]) // Fügen Sie isLoggedIn als Abhängigkeit hinzu
+    }, [isLoggedIn]) // Fügt isLoggedIn als Abhängigkeit hinzu, um den Effekt erneut auszuführen, wenn sich der Zustand ändert ändert
 };
 
 export default Status;

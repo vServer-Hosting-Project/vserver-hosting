@@ -1,0 +1,59 @@
+.error-container {
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da; /* Hintergrundfarbe der Fehlermeldung */
+    border-radius: 5px; /* Abrundung der Ecken der Fehlermeldung */
+    margin-top: 10px; /* Abstand zwischen dem Container und der Fehlermeldung */
+    animation: fadeOut 3s 1s forwards; /* Animation, die die Fehlermeldung nach 1 Sekunde innerhalb von 3 Sekunden ausblendet */
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+  
+  .error {
+    color: red;
+    font-family: Arial, sans-serif;
+  }
+
+  
+  /* CSS für den Fehler "Passwörter stimmen nicht überein" */
+.error-password-mismatch {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  /* CSS für den Fehler "Nutzername fehlt" */
+  .error-username-missing {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  /* CSS für den Fehler "E-Mail-Adresse fehlt" */
+  .error-email-missing {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  /* CSS für den Fehler "Passwort benötigt 8 Zeichen, 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Zahl und 1 Sonderzeichen" */
+  .error-password-requirements {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  

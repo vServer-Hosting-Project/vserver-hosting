@@ -7,15 +7,18 @@ import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
 import Login from './components/Login';
 import Register from './components/Register';
+import Confirm from './components/Confirm'; 
 import { Account } from './components/Accounts';
 import Status from './components/Status';
-
 
 function App() {
   const [orders, setOrders] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [username, setUsername] = useState("");
 
+  // Funktionen zum Öffnen und Schließen der Login- und Registrierungsmodals
   const openLogin = () => {
     setShowLogin(true);
     setShowRegister(false);
@@ -32,26 +35,36 @@ function App() {
 
   const closeRegister = () => {
     setShowRegister(false);
+    setTimeout(openLogin, 0);
+  }
+  const openConfirm = () => {
+    setShowConfirm(true);
   };
 
+  const closeConfirm = () => {
+    setShowConfirm(false);
+  };
+
+  // Funktion zum Hinzufügen einer Bestellung
   const addOrder = (order) => {
     setOrders([...orders, order]);
   };
 
   return (
     <Account>
-    <BrowserRouter>
-    <Status />
-      <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/warenkorb" element={<Warenkorb orders={orders} />} />
-        <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
-      </Routes>
-      <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
-      <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Status />
+        <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/warenkorb" element={<Warenkorb orders={orders} />} />
+          <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
+        </Routes>
+        <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
+        <Register isOpen={showRegister} onRequestClose={closeRegister} onConfirmOpen={openConfirm} setUsername={setUsername} />
+        <Confirm isOpen={showConfirm} onRequestClose={closeConfirm} username={username} />
+      </BrowserRouter>
     </Account>
   );
 }

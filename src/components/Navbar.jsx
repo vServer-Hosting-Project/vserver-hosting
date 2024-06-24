@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import firmaLogo from '../assets/images/firma.png';
 import { AccountContext } from './Accounts';
 
+// Die Navbar-Komponente
 function Navbar({ onLoginOpen }) {
   const { isLoggedIn, logout } = useContext(AccountContext);
 
@@ -42,7 +43,7 @@ function Navbar({ onLoginOpen }) {
             </Link>
           </li>
           <li className="nav-item dropdown align-middle">
-            {isLoggedIn ? (
+            {isLoggedIn ? ( // Wenn der Benutzer eingeloggt ist, wird das Dropdown freigeschaltet
               <>
                 <button className="dropdown-toggle align-middle">
                   Konto
@@ -56,7 +57,7 @@ function Navbar({ onLoginOpen }) {
                   </Link>
                 </div>
               </>
-            ) : ( 
+            ) : ( // Wenn der Benutzer nicht eingeloggt ist, zeigen Sie den Login-Link an
               <Link className="nav-link custom-link align-middle" to="#" onClick={onLoginOpen}>
                 Login
               </Link>
