@@ -45,7 +45,7 @@ function Navbar({ onLoginOpen, cartCount }) {
             </Link>
           </li>
           <li className="nav-item dropdown align-middle">
-            {isLoggedIn ? ( // Wenn der Benutzer eingeloggt ist, wird das Dropdown freigeschaltet
+            {isLoggedIn ? (
               <>
                 <button className="dropdown-toggle align-middle">
                   Konto
@@ -59,7 +59,7 @@ function Navbar({ onLoginOpen, cartCount }) {
                   </Link>
                 </div>
               </>
-            ) : ( // Wenn der Benutzer nicht eingeloggt ist, zeigen Sie den Login-Link an
+            ) : ( 
               <Link className="nav-link custom-link align-middle" to="#" onClick={onLoginOpen}>
                 Login
               </Link>

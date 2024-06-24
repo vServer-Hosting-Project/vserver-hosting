@@ -7,18 +7,15 @@ import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
 import Login from './components/Login';
 import Register from './components/Register';
-import Confirm from './components/Confirm'; 
 import { Account } from './components/Accounts';
 import Status from './components/Status';
+
 
 function App() {
   const [orders, setOrders] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [username, setUsername] = useState("");
 
-  // Funktionen zum Öffnen und Schließen der Login- und Registrierungsmodals
   const openLogin = () => {
     setShowLogin(true);
     setShowRegister(false);
@@ -35,17 +32,8 @@ function App() {
 
   const closeRegister = () => {
     setShowRegister(false);
-    setTimeout(openLogin, 0);
-  }
-  const openConfirm = () => {
-    setShowConfirm(true);
   };
 
-  const closeConfirm = () => {
-    setShowConfirm(false);
-  };
-
-  // Funktion zum Hinzufügen einer Bestellung
   const addOrder = (order) => {
     setOrders([...orders, order]);
   };
