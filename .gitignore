@@ -166,4 +166,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+<<<<<<< HEAD
 server.js
+=======
+>>>>>>> 5b5aa39dcbf3d56befa0136b1f2d0a92f263f35e
