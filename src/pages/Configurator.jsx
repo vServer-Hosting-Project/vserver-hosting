@@ -21,7 +21,7 @@ function Configurator({ addOrder }) {
   const validRAMs = [1, 2, 4, 8, 16];
 
   const [selectedInstance, setSelectedInstance] = useState(instanceOptions[0]);
-  const [storage, setStorage] = useState(30);  // Default to 30 GB
+  const [storage, setStorage] = useState(30); // Default to 30 GB
   const [selectedOSKleinster, setSelectedOSKleinster] = useState('Linux');
   const [selectedOSGroesster, setSelectedOSGroesster] = useState('Linux');
   const [selectedOSKonfigurator, setSelectedOSKonfigurator] = useState('Linux');
@@ -42,30 +42,8 @@ function Configurator({ addOrder }) {
     const fileName = `${orderId}.tf`;
 
     const orderData = { instanceType, os, osVersion, storage, fileName };
-    console.log('Sending order data:', orderData);
-
-    fetch('https://nextgenhosting.de/api/order', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(orderData)
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(data => {
-        console.log('Order response:', data);
-        console.log('Adding order:', { instanceType, os, osVersion, storage });
-        addOrder({ instanceType, os, osVersion, storage });
-        setError('');  // Clear error message on successful order
-      })
-      .catch(error => {
-        console.error('Error creating Terraform file:', error);
-      });
+    addOrder(orderData);
+    setError('');
   };
 
   const handleCPUChange = (event) => {
@@ -178,7 +156,7 @@ function Configurator({ addOrder }) {
                   {selectedOSVersionKleinster && <p>Betriebssystemversion: {selectedOSVersionKleinster}</p>}
                 </div>
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster, setErrorKleinster)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster, setErrorKleinster)}>In den Warenkorb</button>
                 </div>
               </div>
             </div>
@@ -271,7 +249,7 @@ function Configurator({ addOrder }) {
                   {selectedOSVersionKonfigurator && <p>Betriebssystemversion: {selectedOSVersionKonfigurator}</p>}
                 </div>
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator, setErrorKonfigurator)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator, setErrorKonfigurator)}>In den Warenkorb</button>
                 </div>
               </div>
             </div>
@@ -331,7 +309,7 @@ function Configurator({ addOrder }) {
                   {selectedOSVersionGroesster && <p>Betriebssystemversion: {selectedOSVersionGroesster}</p>}
                 </div>
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster, setErrorGroesster)}>Bestellen</button>
+                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster, setErrorGroesster)}>In den Warenkorb</button>
                 </div>
               </div>
             </div>

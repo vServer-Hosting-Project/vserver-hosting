@@ -1,5 +1,4 @@
-
-
+/* Dropdown- und Navbar-Stile */
 .dropdown-toggle {
   background-color: transparent;
   color: white;
@@ -10,13 +9,11 @@
   vertical-align: middle;
   margin: 0;
   padding: 0;
-
 }
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
-
 
 .dropdown-menu a {
   right: 15px;
@@ -25,20 +22,19 @@
   text-decoration: none;
   display: block;
   background-color: transparent;
-  border: none
+  border: none;
 }
 
 .nav-item:hover .dropdown-menu {
   display: block;
 }
 
-
-.custom-navbar{
+.custom-navbar {
   background-color: #48ff00;
 }
 
-.nav-link{
-  color:white;
+.nav-link {
+  color: white;
   font-weight: bold;
 }
 
@@ -47,7 +43,6 @@
   display: flex;
   align-items: center;
 }
-
 
 /* Globale Stile */
 body {
@@ -340,4 +335,112 @@ body {
   font-weight: bolder;
   font-size: 12px;
   margin-top: 5px;
+}
+
+/* Warenkorb spezifische Anpassungen */
+.invoice {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-header, .invoice-footer {
+  margin-bottom: 20px;
+}
+
+.invoice-header h4 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.invoice-table th, .invoice-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.invoice-table th {
+  background-color: #f1f1f1;
+}
+
+.os-logo-small {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.cart-linux-logo {
+  width: 60%;
+  height: 50%;
+  margin-left: 5px;
+}
+
+.cart-windows-logo {
+  width: 70%;
+  height: 50%;
+}
+
+.remove-button, .submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.remove-button:hover, .submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Warenkorb Container */
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
 }

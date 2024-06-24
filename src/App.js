@@ -50,20 +50,28 @@ function App() {
     setOrders([...orders, order]);
   };
 
+  const removeOrder = (index) => {
+    setOrders(orders.filter((_, i) => i !== index));
+  };
+
+  const submitOrders = () => {
+    console.log('Bestellungen abschicken:', orders);
+    setOrders([]);
+  };
+
   return (
     <Account>
       <BrowserRouter>
         <Status />
-        <Navbar onLoginOpen={openLogin} onRegisterOpen={openRegister} />
+        <Navbar onLoginOpen={openLogin} cartCount={orders.length} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/support" element={<Support />} />
-          <Route path="/warenkorb" element={<Warenkorb orders={orders} />} />
+          <Route path="/warenkorb" element={<Warenkorb orders={orders} removeOrder={removeOrder} submitOrders={submitOrders} />} />
           <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
         </Routes>
         <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
-        <Register isOpen={showRegister} onRequestClose={closeRegister} onConfirmOpen={openConfirm} setUsername={setUsername} />
-        <Confirm isOpen={showConfirm} onRequestClose={closeConfirm} username={username} />
+        <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
       </BrowserRouter>
     </Account>
   );

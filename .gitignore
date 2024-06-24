@@ -165,12 +165,4 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-build/asset-manifest.json
-build/index.html
-build/precache-manifest.6b7d779ef73833959194f593507bd504.js
-build/precache-manifest.bfda9437aae2332532822300355d66b6.js
-build/service-worker.js
-build/static/js/main.d7ddf148.chunk.js
-build/static/js/main.d7ddf148.chunk.js.map
-build/static/js/main.fd995c6e.chunk.js
-build/static/js/main.fd995c6e.chunk.js.map
+
