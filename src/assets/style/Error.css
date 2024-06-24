@@ -1,3 +1,19 @@
+.password-requirements {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  font-size: 13px; /* Verkleinern Sie die Schriftgröße */
+}
+
+.password-requirements li {
+  color: gray;
+}
+
+.password-requirements li.valid {
+  color: green;
+}
+
+
 .error-container {
     width: 100%;
     z-index: 1;
