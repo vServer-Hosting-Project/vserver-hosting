@@ -9,13 +9,14 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { Account } from './components/Accounts';
 import Status from './components/Status';
+import Confirm from './components/Confirm';
 
 
 function App() {
   const [orders, setOrders] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-
+  const [showConfirm, setShowConfirm] = useState(false);
   const openLogin = () => {
     setShowLogin(true);
     setShowRegister(false);
@@ -34,6 +35,14 @@ function App() {
     setShowRegister(false);
   };
 
+  const openConfirm = () => {
+    setShowConfirm(true);
+  };
+
+  const closeConfirm = () => {
+    setShowConfirm(false);
+  }
+  
   const addOrder = (order) => {
     setOrders([...orders, order]);
   };
@@ -59,7 +68,8 @@ function App() {
           <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
         </Routes>
         <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
-        <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} />
+        <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} onConfirmOpen={openConfirm} />
+        <Confirm isOpen={showConfirm} onRequestClose={closeConfirm} />
       </BrowserRouter>
     </Account>
   );

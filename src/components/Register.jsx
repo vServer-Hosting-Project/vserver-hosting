@@ -5,7 +5,7 @@ import UserPool from './UserPool';
 
 Modal.setAppElement('#root')
 
-function Register({ isOpen, onRequestClose, onLoginOpen }) {
+function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +23,7 @@ function Register({ isOpen, onRequestClose, onLoginOpen }) {
       } else {
         console.log(data);
         onRequestClose();
+        onConfirmOpen();
       }
     })
   };
