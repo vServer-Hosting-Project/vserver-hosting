@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../assets/style/Login.css'
 import UserPool from './UserPool';
@@ -10,6 +10,25 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState({
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    number: false,
+    specialChar: false,
+    match: null
+  });
+
+  useEffect(() => {
+    setPasswordError({
+      length: password.length >= 8,
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /\d/.test(password),
+      specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password),
+      match: password && confirmPassword ? password === confirmPassword : null
+    });
+  }, [password]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +36,7 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
       alert("Die Passwörter stimmen nicht überein.");
       return;
     }
-      UserPool.signUp(email, password, [], null, (err, data) => {
+    UserPool.signUp(email, password, [], null, (err, data) => {
       if (err) {
         console.error(err);
       } else {
@@ -52,8 +71,16 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
               <i className="fas fa-lock" />
               <input value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Passwort bestätigen" required="" />
             </div>
+            <ul className="password-requirements">
+              <li className={passwordError.length ? "valid" : ""}>- 8 Zeichen</li>
+              <li className={passwordError.uppercase ? "valid" : ""}>- 1 Großbuchstabe</li>
+              <li className={passwordError.lowercase ? "valid" : ""}>- 1 Kleinbuchstabe</li>
+              <li className={passwordError.number ? "valid" : ""}>- 1 Zahl</li>
+              <li className={passwordError.specialChar ? "valid" : ""}>- 1 Sonderzeichen</li>
+              <li className={passwordError.match ? "valid" : ""}>- Passwörter stimmen überein</li>
+            </ul>
             <div className="row button">
-              <input type="submit" defaultValue="Konto erstellen" />
+              <input type="submit" value="Konto erstellen" />
             </div>
             <div className="signup-link">
               Bereits ein Konto? <a href="#" onClick={(event) => { event.preventDefault(); onRequestClose(); setTimeout(onLoginOpen, 0); }}>Einloggen</a>

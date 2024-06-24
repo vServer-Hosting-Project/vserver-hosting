@@ -46,7 +46,7 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
               <a href="#">Passwort vergessen.</a>
             </div>
             <div className="row button">
-              <input type="submit" Value="Login" />
+              <input type="submit" value="Login" />
             </div>
             <div className="signup-link">
             Kein Konto? <a href="#" onClick={(event) => { event.preventDefault(); onRequestClose(); setTimeout(onRegisterOpen, 0); }}>Konto erstellen</a>
