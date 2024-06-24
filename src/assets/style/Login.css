@@ -1,5 +1,8 @@
 .ReactModal__Content {
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -9,7 +12,7 @@
 .login-modal .container{
     max-width: 440px;
     padding: 0 20px;
-    margin: 170px auto;
+    margin: 95px auto;
   }
   .login-modal .wrapper{
     width: 100%;
