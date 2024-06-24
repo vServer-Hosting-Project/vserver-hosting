@@ -7,21 +7,21 @@ import { v4 as uuidv4 } from 'uuid';
 
 function Configurator({ addOrder }) {
   const instanceOptions = [
-    { name: 't2.micro', vCPUs: 1, RAM: 1 },
-    { name: 't3.small', vCPUs: 2, RAM: 2 },
-    { name: 't3.medium', vCPUs: 2, RAM: 4 },
-    { name: 't3.large', vCPUs: 2, RAM: 8 },
-    { name: 'm5.large', vCPUs: 2, RAM: 8 },
-    { name: 'm5.xlarge', vCPUs: 4, RAM: 16 },
-    { name: 'c5.large', vCPUs: 2, RAM: 4 },
-    { name: 'c5.xlarge', vCPUs: 4, RAM: 8 }
+    { name: 't2.micro', vCPUs: 1, RAM: 1, cost: 20 },
+    { name: 't3.small', vCPUs: 2, RAM: 2, cost: 30 },
+    { name: 't3.medium', vCPUs: 2, RAM: 4, cost: 40 },
+    { name: 't3.large', vCPUs: 2, RAM: 8, cost: 45 },
+    { name: 'm5.large', vCPUs: 2, RAM: 8, cost: 49 },
+    { name: 'm5.xlarge', vCPUs: 4, RAM: 16, cost: 65 },
+    { name: 'c5.large', vCPUs: 2, RAM: 4, cost: 55 },
+    { name: 'c5.xlarge', vCPUs: 4, RAM: 8, cost: 59 }
   ];
 
   const validCPUs = [1, 2, 4];
   const validRAMs = [1, 2, 4, 8, 16];
 
   const [selectedInstance, setSelectedInstance] = useState(instanceOptions[0]);
-  const [storage, setStorage] = useState(30); // Default to 30 GB
+  const [storage, setStorage] = useState(30);  // Default to 30 GB
   const [selectedOSKleinster, setSelectedOSKleinster] = useState('Linux');
   const [selectedOSGroesster, setSelectedOSGroesster] = useState('Linux');
   const [selectedOSKonfigurator, setSelectedOSKonfigurator] = useState('Linux');
@@ -32,6 +32,11 @@ function Configurator({ addOrder }) {
   const [errorGroesster, setErrorGroesster] = useState('');
   const [errorKonfigurator, setErrorKonfigurator] = useState('');
 
+  const calculateTotalCost = (baseCost, storage) => {
+    const additionalStorageCost = Math.max(0, storage - 30) * 0.1;
+    return baseCost + additionalStorageCost;
+  };
+
   const handleOrder = (instanceType, os, osVersion, setError) => {
     if (!osVersion) {
       setError('Bitte wählen Sie eine Betriebssystemversion aus!');
@@ -41,9 +46,13 @@ function Configurator({ addOrder }) {
     const orderId = uuidv4();
     const fileName = `${orderId}.tf`;
 
-    const orderData = { instanceType, os, osVersion, storage, fileName };
-    addOrder(orderData);
-    setError('');
+    const baseCost = selectedInstance.cost;
+    const totalCost = calculateTotalCost(baseCost, storage);
+
+    const orderData = { instanceType, os, osVersion, storage, fileName, cost: totalCost };
+    console.log('Adding order:', { instanceType, os, osVersion, storage, cost: totalCost });
+    addOrder({ instanceType, os, osVersion, storage, cost: totalCost });
+    setError('');  // Clear error message on successful order
   };
 
   const handleCPUChange = (event) => {
@@ -154,6 +163,8 @@ function Configurator({ addOrder }) {
                   <p>Betriebssystem: {selectedOSKleinster}</p>
                   <hr />
                   {selectedOSVersionKleinster && <p>Betriebssystemversion: {selectedOSVersionKleinster}</p>}
+                  <hr />
+                  <p style={{ fontSize: '1.2em', fontWeight: 'bold' }}>Preis: {calculateTotalCost(20, 30)}€ / Monat</p>
                 </div>
                 <div className="button-container">
                   <button className="order-button" onClick={() => handleOrder('t2.micro', selectedOSKleinster, selectedOSVersionKleinster, setErrorKleinster)}>In den Warenkorb</button>
@@ -194,9 +205,9 @@ function Configurator({ addOrder }) {
                   <input
                     type="range"
                     id="storage-slider"
-                    min="100"
+                    min="30"
                     max="1000"
-                    step="100"
+                    step="10"
                     value={storage}
                     onChange={(e) => setStorage(e.target.value)}
                     className="slider"
@@ -247,6 +258,8 @@ function Configurator({ addOrder }) {
                   <p>Betriebssystem: {selectedOSKonfigurator}</p>
                   <hr />
                   {selectedOSVersionKonfigurator && <p>Betriebssystemversion: {selectedOSVersionKonfigurator}</p>}
+                  <hr />
+                  <p style={{ fontSize: '1.2em', fontWeight: 'bold' }}>Preis: {calculateTotalCost(selectedInstance.cost, storage)}€ / Monat</p>
                 </div>
                 <div className="button-container">
                   <button className="order-button" onClick={() => handleOrder(selectedInstance.name, selectedOSKonfigurator, selectedOSVersionKonfigurator, setErrorKonfigurator)}>In den Warenkorb</button>
@@ -258,9 +271,9 @@ function Configurator({ addOrder }) {
             <div className="server-frame centered">
               <h4>vServer - max</h4>
               <div className="preconfigured-server no-background">
-                <p>Instanztyp: c5.xlarge</p>
+                <p>Instanztyp: m5.xlarge</p>
                 <p>CPU: 4 Kerne</p>
-                <p>RAM: 8 GB</p>
+                <p>RAM: 16 GB</p>
                 <p>Speicher: 1000 GB</p>
                 <div className="os-selection">
                   <label>
@@ -296,20 +309,22 @@ function Configurator({ addOrder }) {
                 {errorGroesster && <p className="error-message">{errorGroesster}</p>}
                 <div className="summary">
                   <h4>Konfiguration:</h4>
-                  <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: c5.xlarge</p>
+                  <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: m5.xlarge</p>
                   <hr />
                   <p>CPU: 4 Kerne</p>
                   <hr />
-                  <p>RAM: 8 GB</p>
+                  <p>RAM: 16 GB</p>
                   <hr />
                   <p>Speicher: 1000 GB SSD</p>
                   <hr />
                   <p>Betriebssystem: {selectedOSGroesster}</p>
                   <hr />
                   {selectedOSVersionGroesster && <p>Betriebssystemversion: {selectedOSVersionGroesster}</p>}
+                  <hr />
+                  <p style={{ fontSize: '1.2em', fontWeight: 'bold' }}>Preis: {calculateTotalCost(65, 1000)}€ / Monat</p>
                 </div>
                 <div className="button-container">
-                  <button className="order-button" onClick={() => handleOrder('c5.xlarge', selectedOSGroesster, selectedOSVersionGroesster, setErrorGroesster)}>In den Warenkorb</button>
+                  <button className="order-button" onClick={() => handleOrder('m5.xlarge', selectedOSGroesster, selectedOSVersionGroesster, setErrorGroesster)}>In den Warenkorb</button>
                 </div>
               </div>
             </div>

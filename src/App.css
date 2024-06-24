@@ -294,7 +294,7 @@ body {
 
 /* Home.jsx spezifische Anpassungen */
 .server-grid {
-  display: flex;
+  display: flex; 
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -335,6 +335,7 @@ body {
   font-weight: bolder;
   font-size: 12px;
   margin-top: 5px;
+  text-align: center; /* Zentriert die Fehlermeldung */
 }
 
 /* Warenkorb spezifische Anpassungen */
@@ -378,13 +379,13 @@ body {
 }
 
 .cart-linux-logo {
-  width: 60%;
+  width: 30%;
   height: 50%;
   margin-left: 5px;
 }
 
 .cart-windows-logo {
-  width: 70%;
+  width: 40%;
   height: 50%;
 }
 
@@ -402,9 +403,49 @@ body {
   background-color: #0056b3;
 }
 
+.discount-code-container {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discount-code-input {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.apply-discount-button, .remove-discount-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.apply-discount-button:hover, .remove-discount-button:hover {
+  background-color: #218838;
+}
+
+.discount-message {
+  display: flex;
+  align-items: center;
+}
+
+.discount-message p {
+  margin: 0;
+}
+
+.discount-message button {
+  margin-left: 10px;
+}
+
 /* Warenkorb Container */
 .cart-container {
-  max-width: 800px;
+  max-width: 1000px; /* Erhöht die Breite des Containers */
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -443,4 +484,10 @@ body {
   border-radius: 50%;
   padding: 5px 10px;
   font-size: 12px;
+}
+
+.discount-code-label {
+  font-weight: normal;
+  margin-right: 10px;
+  align-self: center; /* Zentriert das Label vertikal */
 }

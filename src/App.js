@@ -42,8 +42,28 @@ function App() {
   };
 
   const submitOrders = () => {
-    console.log('Bestellungen abschicken:', orders);
-    setOrders([]);
+    console.log('Sending orders:', orders);  // Hinzugefügt zur Überprüfung der gesendeten Daten
+    fetch('http://localhost:5000/api/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orders),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      setOrders([]);  // Leert den Warenkorb nach erfolgreicher Bestellung
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      // Optional: Handle error (e.g., show an error message)
+    });
   };
 
   return (
