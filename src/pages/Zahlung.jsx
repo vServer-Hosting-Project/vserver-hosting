@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const instanceDetails = {
   't2.micro': { vCPUs: 1, RAM: 1, price: 20 },
@@ -114,7 +115,7 @@ function Zahlung({ orders, submitOrder }) {
               className="discount-code-input"
             />
             <button type="button" onClick={applyDiscountCode} className="apply-discount-button">Anwenden</button>
-            {discountError && <p className="error-message">{discountError}</p>}
+            {discountError && <p className="discount-error">{discountError}</p>}
           </div>
           <div className="invoice-summary">
             <p>Zwischensumme: {originalTotalCost.toFixed(2)}€</p>
@@ -192,6 +193,26 @@ function Zahlung({ orders, submitOrder }) {
           </div>
           <button type="submit" className="submit-button">Bestellung abschicken</button>
         </form>
+        <div className="paypal-button-container">
+          <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+            <PayPalButtons
+              createOrder={(data, actions) => {
+                return actions.order.create({
+                  purchase_units: [{
+                    amount: {
+                      value: totalCost.toFixed(2) // Replace with your order amount
+                    }
+                  }]
+                });
+              }}
+              onApprove={(data, actions) => {
+                return actions.order.capture().then((details) => {
+                  alert("Transaction completed by " + details.payer.name.given_name);
+                });
+              }}
+            />
+          </PayPalScriptProvider>
+        </div>
       </main>
     </div>
   );
