@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Home from "./pages/Home";
 import Support from "./pages/Support";
 import Warenkorb from "./pages/Warenkorb";
+import Zahlung from "./pages/Zahlung";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
@@ -41,14 +42,15 @@ function App() {
     setOrders(orders.filter((_, i) => i !== index));
   };
 
-  const submitOrders = () => {
-    console.log('Sending orders:', orders);  // Hinzugefügt zur Überprüfung der gesendeten Daten
-    fetch('http://localhost:5000/api/order', {
+  const submitOrder = (customerData) => {
+    const orderData = { customerData, orders };
+    console.log('Sending order data:', orderData);
+    fetch('http://localhost:5000/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(orders),
+      body: JSON.stringify(orderData),
     })
     .then(response => {
       if (!response.ok) {
@@ -74,7 +76,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/support" element={<Support />} />
-          <Route path="/warenkorb" element={<Warenkorb orders={orders} removeOrder={removeOrder} submitOrders={submitOrders} />} />
+          <Route path="/warenkorb" element={<Warenkorb orders={orders} removeOrder={removeOrder} />} />
+          <Route path="/zahlung" element={<Zahlung orders={orders} submitOrder={submitOrder} />} />
           <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
         </Routes>
         <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
