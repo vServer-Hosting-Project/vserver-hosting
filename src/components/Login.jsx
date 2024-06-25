@@ -5,7 +5,13 @@ import { AccountContext } from './Accounts';
 
 Modal.setAppElement('#root')
 
+
+// Login-Funktion
+
 function Login({ isOpen, onRequestClose, onRegisterOpen }) {
+
+  // Zustandsvariablen für E-Mail, Passwort, Fehlermeldung und Eingabefehler
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState ("");
@@ -14,7 +20,12 @@ function Login({ isOpen, onRequestClose, onRegisterOpen }) {
     password: false
   });
 
+  // Zugriff auf die Authentifizierungsfunktion aus dem Kontext
+
+
   const { authenticate } = useContext(AccountContext);
+
+  // Funktion, die beim Absenden des Formulars aufgerufen wird
 
   const Submit = (event) => {
     event.preventDefault();

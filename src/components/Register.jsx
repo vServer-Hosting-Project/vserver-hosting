@@ -3,9 +3,14 @@ import Modal from 'react-modal';
 import '../assets/style/Login.css'
 import UserPool from './UserPool';
 
+// Setzen des App-Elements für das Modal
+
 Modal.setAppElement('#root')
 
+// Registrierungsfunktion
 function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
+
+    // Zustandsvariablen für Name, E-Mail, Passwort, Bestätigungspasswort, Passwortfehler und Eingabefehler
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +30,9 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
     confirmPassword: false
   });
 
+
+  // Effekt, der bei Änderungen von Passwort und Bestätigungspasswort ausgeführt wird
+
   useEffect(() => {
     setPasswordError({
       length: password.length >= 8,
@@ -35,6 +43,9 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
       match: password && confirmPassword ? password === confirmPassword : null
     });
   }, [password, confirmPassword]);
+
+
+  // Funktion, die beim Absenden des Formulars aufgerufen wird
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +73,11 @@ function Register({ isOpen, onRequestClose, onLoginOpen, onConfirmOpen }) {
       if (err) {
         console.error(err);
       } else {
-        console.log(data);
+        console.log("Registrierungsdaten:", data);
+
+        sessionStorage.setItem('username', data.user.getUsername());
+
+        // Hier weiter
         onRequestClose();
         onConfirmOpen();
       }

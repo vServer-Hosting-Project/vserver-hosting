@@ -9,26 +9,35 @@ function Confirm({ isOpen, onRequestClose }) {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
+  // Zugriff auf die Bestätigungsfunktion aus dem Kontext#
+  
   const { confirm } = useContext(AccountContext);
 
+  // Funktion, die beim Absenden des Formulars aufgerufen wird
+  
   const onSubmit = (event) => {
     event.preventDefault();
   
+    // Überprüfung, ob ein Code eingegeben wurde
+
     if (!code) {
       setError("Bitte geben Sie einen Bestätigungscode ein.");
       return;
     }
-  
     console.log('Calling confirm function in Confirm.jsx with code:', code);
+
+    // Aufruf der Bestätigungsfunktion mit dem eingegebenen Code
+
     confirm(code)
       .then(data => {
-        console.log("Code confirmed!", data);
+        console.log("Bestätigungsdaten:", data);
         setError(""); 
         setSuccess(true);
         setTimeout(onRequestClose, 2000);
       })
       .catch(err => {
-        console.error("Failed to confirm code", err);
+        console.error("Fehler bei der Bestätigung:", err);
         setError("Der eingegebene Code ist falsch.");
       });
   };
