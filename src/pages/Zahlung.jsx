@@ -47,6 +47,15 @@ function Zahlung({ orders, submitOrder }) {
     }
   };
 
+  const removeDiscountCode = () => {
+    setCustomerData(prevData => ({
+      ...prevData,
+      discountCode: ''
+    }));
+    setDiscountApplied(false);
+    setDiscountError('');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     submitOrder(customerData);
@@ -58,11 +67,11 @@ function Zahlung({ orders, submitOrder }) {
     return acc + instanceCost + storageCost;
   }, 0);
 
-  const discountAmount = discountApplied ? originalTotalCost : 0; // 100% Rabatt
+  const discountAmount = discountApplied ? originalTotalCost - 0.01 : 0; // Set to 0.01 for discount
   const discountedTotalCost = originalTotalCost - discountAmount;
   const taxRate = 0.19; // 19% MwSt
   const taxAmount = discountedTotalCost * taxRate;
-  const totalCost = discountedTotalCost + taxAmount;
+  const totalCost = (discountApplied ? 0.01 : discountedTotalCost).toFixed(2);
 
   return (
     <div className="container payment-container">
@@ -105,27 +114,36 @@ function Zahlung({ orders, submitOrder }) {
             </tbody>
           </table>
           <div className="discount-code-container">
-            <label htmlFor="discountCode" className="discount-code-label">Gutscheincode:</label>
-            <input
-              type="text"
-              id="discountCode"
-              name="discountCode"
-              value={customerData.discountCode}
-              onChange={handleChange}
-              className="discount-code-input"
-            />
-            <button type="button" onClick={applyDiscountCode} className="apply-discount-button">Anwenden</button>
-            {discountError && <p className="discount-error">{discountError}</p>}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+              <label htmlFor="discountCode" className="discount-code-label" style={{ alignSelf: 'flex-start' }}>Gutscheincode:</label>
+              <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+                <input
+                  type="text"
+                  id="discountCode"
+                  name="discountCode"
+                  value={customerData.discountCode}
+                  onChange={handleChange}
+                  className="discount-code-input"
+                  style={{ flex: '1' }}
+                />
+                <button type="button" onClick={applyDiscountCode} className="apply-discount-button">Anwenden</button>
+              </div>
+            </div>
+            {discountError && <p className="error-message">{discountError}</p>}
+            {discountApplied && (
+              <button type="button" onClick={removeDiscountCode} className="remove-discount-button">Entfernen</button>
+            )}
           </div>
           <div className="invoice-summary">
             <p>Zwischensumme: {originalTotalCost.toFixed(2)}€</p>
             {discountApplied && <p>Rabatt: -{discountAmount.toFixed(2)}€</p>}
             <p>MwSt (19%): {taxAmount.toFixed(2)}€</p>
-            <p><strong>Gesamtbetrag: {totalCost.toFixed(2)}€</strong></p>
+            <p><strong>Gesamtbetrag: {totalCost}€</strong></p>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="payment-form">
-          <div className="form-row">
+        <div className="customer-data-container" style={{ backgroundColor: '#f0f0f0', padding: '10px', marginTop: '20px', transform: 'scale(0.7)', transformOrigin: 'top left' }}>
+          <h4 style={{ textAlign: 'left' }}>Rechnungsinformationen:</h4>
+          <form onSubmit={handleSubmit} className="payment-form">
             <div className="form-group">
               <label htmlFor="firstName">Vorname:</label>
               <input
@@ -150,8 +168,6 @@ function Zahlung({ orders, submitOrder }) {
                 className="small-input"
               />
             </div>
-          </div>
-          <div className="form-row">
             <div className="form-group">
               <label htmlFor="street">Straße:</label>
               <input
@@ -176,8 +192,6 @@ function Zahlung({ orders, submitOrder }) {
                 className="small-input"
               />
             </div>
-          </div>
-          <div className="form-row">
             <div className="form-group">
               <label htmlFor="email">E-Mail:</label>
               <input
@@ -190,17 +204,17 @@ function Zahlung({ orders, submitOrder }) {
                 className="small-input"
               />
             </div>
-          </div>
-          <button type="submit" className="submit-button">Bestellung abschicken</button>
-        </form>
+            <button type="submit" className="submit-button">Bestellung abschicken</button>
+          </form>
+        </div>
         <div className="paypal-button-container">
-          <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+          <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID, "currency": "EUR" }}>
             <PayPalButtons
               createOrder={(data, actions) => {
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
-                      value: totalCost.toFixed(2) // Replace with your order amount
+                      value: totalCost // Übergibt die rabattierte Summe an PayPal
                     }
                   }]
                 });
