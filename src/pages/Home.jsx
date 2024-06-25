@@ -8,6 +8,7 @@ import redHatLogo from '../assets/logos/redhat.png';
 import debianLogo from '../assets/logos/debian.png';
 import suseLogo from '../assets/logos/suse.png';
 import amazonLogo from '../assets/logos/amazon.png';
+import '../index.css'
 
 function Home() {
   return (

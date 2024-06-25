@@ -1,0 +1,91 @@
+@keyframes shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  10% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+  20% { transform: translate(-1px, 0px) rotate(0.5deg); }
+  30% { transform: translate(1px, 1px) rotate(0deg); }
+  40% { transform: translate(0px, -1px) rotate(0.5deg); }
+  50% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+  60% { transform: translate(-1px, 0px) rotate(0deg); }
+  70% { transform: translate(1px, 0px) rotate(-0.5deg); }
+  80% { transform: translate(-1px, -1px) rotate(0.5deg); }
+  90% { transform: translate(0px, 1px) rotate(0deg); }
+  100% { transform: translate(0px, -1px) rotate(-0.5deg); }
+}
+
+.error {
+  animation: shake 0.3s; /* Apply the shake animation */
+  animation-iteration-count: 1; /* The animation will happen once */
+}
+
+
+.success-container {
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 255, 0, 0.5); /* Durchsichtiger grüner Hintergrund */
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  font-family: Arial, sans-serif;
+}
+
+/* Ändern Sie die Farbe des Rahmens auf Rot für Eingabefelder mit Fehlern */
+.error input {
+  border-color: red !important;
+}
+
+/* Ändern Sie die Farbe des Platzhaltertextes auf Rot für Eingabefelder mit Fehlern */
+.error input::placeholder {
+  color: red !important;
+  opacity: 1; /* Firefox */
+}
+
+/* Internet Explorer 10-11 */
+.error input:-ms-input-placeholder {
+  color: red !important;
+}
+
+/* Microsoft Edge */
+.error input::-ms-input-placeholder {
+  color: red !important;
+}
+
+.password-requirements {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  font-size: 13px; /* Verkleinern Sie die Schriftgröße */
+}
+
+.password-requirements li {
+  color: gray;
+}
+
+.password-requirements li.valid {
+  color: green;
+}
+
+.error-container {
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da; /* Hintergrundfarbe der Fehlermeldung */
+    border-radius: 5px; /* Abrundung der Ecken der Fehlermeldung */
+    margin-top: 10px; /* Abstand zwischen dem Container und der Fehlermeldung */
+    animation: fadeOut 3s 1s forwards; /* Animation, die die Fehlermeldung nach 1 Sekunde innerhalb von 3 Sekunden ausblendet */
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+  
+  .error {
+    color: red;
+    font-family: Arial, sans-serif;
+  }

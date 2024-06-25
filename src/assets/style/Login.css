@@ -1,5 +1,8 @@
 .ReactModal__Content {
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -9,7 +12,7 @@
 .login-modal .container{
     max-width: 440px;
     padding: 0 20px;
-    margin: 170px auto;
+    margin: 95px auto;
   }
   .login-modal .wrapper{
     width: 100%;
@@ -19,7 +22,7 @@
   }
   .login-modal .wrapper .title{
     height: 90px;
-    background: #16a085;
+    background: #D35400; /* Dunkles Orange */
     border-radius: 5px 5px 0 0;
     color: #fff;
     font-size: 30px;
@@ -47,8 +50,8 @@
     transition: all 0.3s ease;
   }
   .login-modal form .row input:focus{
-    border-color: #16a085;
-    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+    border-color: #D35400; /* Dunkles Orange */
+    box-shadow: inset 0px 0px 2px 2px rgba(211,84,0,0.25); /* Dunkles Orange */
   }
   .login-modal form .row input::placeholder{
     color: #999;
@@ -59,8 +62,8 @@
     height: 100%;
     color: #fff;
     font-size: 18px;
-    background: #16a085;
-    border: 1px solid #16a085;
+    background: #D35400; /* Dunkles Orange */
+    border: 1px solid #D35400; /* Dunkles Orange */
     border-radius: 5px 0 0 5px;
     display: flex;
     align-items: center;
@@ -70,7 +73,7 @@
     margin: -8px 0 20px 0;
   }
   .login-modal .wrapper form .pass a{
-    color: #16a085;
+    color: #D35400; /* Dunkles Orange */
     font-size: 17px;
     text-decoration: none;
   }
@@ -82,12 +85,12 @@
     font-size: 20px;
     font-weight: 500;
     padding-left: 0px;
-    background: #16a085;
-    border: 1px solid #16a085;
+    background: #D35400; /* Dunkles Orange */
+    border: 1px solid #D35400; /* Dunkles Orange */
     cursor: pointer;
   }
   .login-modal form .button input:hover{
-    background: #12876f;
+    background: #A04000; /* Dunkleres Orange */
   }
   .login-modal .wrapper form .signup-link{
     text-align: center;
@@ -95,10 +98,9 @@
     font-size: 17px;
   }
   .login-modal .wrapper form .signup-link a{
-    color: #16a085;
+    color: #D35400; /* Dunkles Orange */
     text-decoration: none;
   }
   .login-modal form .signup-link a:hover{
     text-decoration: underline;
   }
-  

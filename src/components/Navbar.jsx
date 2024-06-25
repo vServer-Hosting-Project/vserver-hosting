@@ -59,7 +59,7 @@ function Navbar({ onLoginOpen, cartCount }) {
                   </Link>
                 </div>
               </>
-            ) : (
+            ) : ( 
               <Link className="nav-link custom-link align-middle" to="#" onClick={onLoginOpen}>
                 Login
               </Link>
