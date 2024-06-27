@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Support from "./pages/Support";
 import Warenkorb from "./pages/Warenkorb";
 import Zahlung from "./pages/Zahlung";
+import Bestellung from "./pages/Bestellung"; // Importiere die Bestellung-Seite
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Configurator from "./pages/Configurator";
 import Navbar from "./components/Navbar";
@@ -11,6 +12,7 @@ import Register from './components/Register';
 import { Account } from './components/Accounts';
 import Status from './components/Status';
 import Confirm from './components/Confirm';
+import Footer from './components/footer'
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -89,10 +91,12 @@ function App() {
           <Route path="/warenkorb" element={<Warenkorb orders={orders} removeOrder={removeOrder} />} />
           <Route path="/zahlung" element={<Zahlung orders={orders} submitOrder={submitOrder} />} />
           <Route path="/konfigurator" element={<Configurator addOrder={addOrder} />} />
+          <Route path="/bestellung" element={<Bestellung />} /> {/* Neue Route hinzufügen */}
         </Routes>
         <Login isOpen={showLogin} onRequestClose={closeLogin} onRegisterOpen={openRegister} />
         <Register isOpen={showRegister} onRequestClose={closeRegister} onLoginOpen={openLogin} onConfirmOpen={openConfirm} />
         <Confirm isOpen={showConfirm} onRequestClose={closeConfirm} />
+        <footer><Footer /></footer>
       </BrowserRouter>
     </Account>
   );

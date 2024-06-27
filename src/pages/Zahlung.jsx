@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Login from '../components/Login';
+import { AccountContext } from '../components/Accounts';
+import Register from '../components/Register';
+import Confirm from '../components/Confirm';
 
 const instanceDetails = {
   't2.micro': { vCPUs: 1, RAM: 1, price: 20 },
@@ -28,6 +33,13 @@ function Zahlung({ orders, submitOrder }) {
   });
   const [discountApplied, setDiscountApplied] = useState(false);
   const [discountError, setDiscountError] = useState('');
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [orderId, setOrderId] = useState(null);
+
+  const { isLoggedIn } = useContext(AccountContext);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,10 +49,13 @@ function Zahlung({ orders, submitOrder }) {
     }));
   };
 
+  useEffect(() => {});
+
   const applyDiscountCode = () => {
     if (customerData.discountCode === 'ts24') {
       setDiscountApplied(true);
       setDiscountError('');
+      console.log("Discount applied. Total cost: ", totalCost);
     } else {
       setDiscountApplied(false);
       setDiscountError('Ungültiger Gutscheincode');
@@ -54,11 +69,23 @@ function Zahlung({ orders, submitOrder }) {
     }));
     setDiscountApplied(false);
     setDiscountError('');
+    console.log("Discount removed. Total cost: ", totalCost);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitOrder(customerData);
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      submitOrder(customerData);
+      navigateToOrderConfirmation();
+    }
+  };
+
+  const navigateToOrderConfirmation = () => {
+    const generatedOrderId = `ORD-${Math.floor(Math.random() * 1000000)}`;
+    setOrderId(generatedOrderId);
+    navigate('/bestellung', { state: { customerData, orderId: generatedOrderId } });
   };
 
   const originalTotalCost = orders.reduce((acc, order) => {
@@ -71,7 +98,7 @@ function Zahlung({ orders, submitOrder }) {
   const discountedTotalCost = originalTotalCost - discountAmount;
   const taxRate = 0.19; // 19% MwSt
   const taxAmount = discountedTotalCost * taxRate;
-  const totalCost = (discountApplied ? 0.01 : discountedTotalCost).toFixed(2);
+  const totalCost = (discountApplied ? discountedTotalCost : originalTotalCost).toFixed(2);
 
   return (
     <div className="container payment-container">
@@ -144,65 +171,71 @@ function Zahlung({ orders, submitOrder }) {
         <div className="customer-data-container" style={{ backgroundColor: '#f0f0f0', padding: '10px', marginTop: '20px', transform: 'scale(0.7)', transformOrigin: 'top left' }}>
           <h4 style={{ textAlign: 'left' }}>Rechnungsinformationen:</h4>
           <form onSubmit={handleSubmit} className="payment-form">
-            <div className="form-group">
-              <label htmlFor="firstName">Vorname:</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={customerData.firstName}
-                onChange={handleChange}
-                required
-                className="small-input"
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="firstName">Vorname:</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={customerData.firstName}
+                  onChange={handleChange}
+                  required
+                  className="small-input"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastName">Nachname:</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={customerData.lastName}
+                  onChange={handleChange}
+                  required
+                  className="small-input"
+                />
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Nachname:</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={customerData.lastName}
-                onChange={handleChange}
-                required
-                className="small-input"
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="street">Straße:</label>
+                <input
+                  type="text"
+                  id="street"
+                  name="street"
+                  value={customerData.street}
+                  onChange={handleChange}
+                  required
+                  className="small-input"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">Telefon:</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={customerData.phone}
+                  onChange={handleChange}
+                  required
+                  className="small-input"
+                />
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="street">Straße:</label>
-              <input
-                type="text"
-                id="street"
-                name="street"
-                value={customerData.street}
-                onChange={handleChange}
-                required
-                className="small-input"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="phone">Telefon:</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={customerData.phone}
-                onChange={handleChange}
-                required
-                className="small-input"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">E-Mail:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={customerData.email}
-                onChange={handleChange}
-                required
-                className="small-input"
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="email">E-Mail:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={customerData.email}
+                  onChange={handleChange}
+                  required
+                  className="small-input"
+                />
+              </div>
             </div>
             <button type="submit" className="submit-button">Bestellung abschicken</button>
           </form>
@@ -211,6 +244,7 @@ function Zahlung({ orders, submitOrder }) {
           <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID, "currency": "EUR" }}>
             <PayPalButtons
               createOrder={(data, actions) => {
+                console.log("Total Cost: ", totalCost);
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
@@ -222,11 +256,21 @@ function Zahlung({ orders, submitOrder }) {
               onApprove={(data, actions) => {
                 return actions.order.capture().then((details) => {
                   alert("Transaction completed by " + details.payer.name.given_name);
+                  navigateToOrderConfirmation();
                 });
               }}
             />
           </PayPalScriptProvider>
         </div>
+        <Login isOpen={isLoginOpen} onRequestClose={() => setIsLoginOpen(false)} onRegisterOpen={() => setIsRegisterOpen(true)} />
+        <Register isOpen={isRegisterOpen}
+          onRequestClose={() => { setIsRegisterOpen(false); setIsLoginOpen(true); }}
+          onConfirmOpen={() => {
+            setIsConfirmOpen(true);
+            setIsLoginOpen(false);
+          }}
+        />
+        <Confirm isOpen={isConfirmOpen} onRequestClose={() => setIsConfirmOpen(false)} />
       </main>
     </div>
   );

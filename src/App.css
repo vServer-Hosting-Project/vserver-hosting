@@ -1,13 +1,13 @@
 /* Dropdown- und Navbar-Stile */
 .dropdown-toggle {
   background-color: transparent;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
   vertical-align: middle;
-  margin: 0;
+  margin: 5px;
   padding: 0;
 }
 
@@ -683,4 +683,9 @@ body {
 .paypal-buttons {
   transform: scale(1); /* Verkleinert die Größe um 50% */
   transform-origin: center center; /* Zentriert die Transformation */
+}
+
+.footer-content {
+  font-size: small;
+  font-weight: bold
 }
