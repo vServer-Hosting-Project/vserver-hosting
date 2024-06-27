@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from 'react-router-dom';
@@ -70,7 +70,7 @@ function Zahlung({ orders, submitOrder }) {
   };
 
   const originalTotalCost = orders.reduce((acc, order) => {
-    const instance = instanceDetails[order.instanceType];
+    const instance = order.instanceType ? instanceDetails[order.instanceType] : null;
     if (!instance) {
       console.error(`Instance type ${order.instanceType} not found in instanceDetails`);
       return acc;
@@ -84,7 +84,7 @@ function Zahlung({ orders, submitOrder }) {
   const discountedTotalCost = originalTotalCost - discountAmount;
   const taxRate = 0.19; 
   const taxAmount = discountedTotalCost * taxRate;
-  const totalCost = (discountApplied ? 0.01 : discountedTotalCost + taxAmount).toFixed(2);
+  const totalCost = (discountApplied ? 0.01 : discountedTotalCost + taxAmount).toFixed(2).replace('.', ',');
 
   return (
     <div className="container payment-container">
@@ -108,7 +108,7 @@ function Zahlung({ orders, submitOrder }) {
             </thead>
             <tbody>
               {orders.map((order, index) => {
-                const instance = instanceDetails[order.instanceType];
+                const instance = order.instanceType ? instanceDetails[order.instanceType] : null;
                 if (!instance) {
                   console.error(`Instance type ${order.instanceType} not found in instanceDetails`);
                   return null;
@@ -231,7 +231,7 @@ function Zahlung({ orders, submitOrder }) {
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
-                      value: totalCost
+                      value: totalCost.replace(',', '.')
                     }
                   }]
                 });
