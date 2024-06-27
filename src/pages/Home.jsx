@@ -26,7 +26,7 @@ function Home() {
       <section id="description">
         <div className="container description-container">
           <div className="description-text">
-            <h3>Warum v-Hosting?</h3>
+            <h3>Warum NextGenHosting?</h3>
             <hr />
             <p>
               <strong>Hochleistungsfähige Infrastruktur:</strong> Unsere vServer laufen auf der erstklassigen AWS-Infrastruktur, um Ihnen maximale Leistung und Zuverlässigkeit zu bieten. Sie profitieren von dedizierten Ressourcen wie CPU, RAM und SSD-Speicher, die exklusiv für Ihre Anwendungen reserviert sind.
@@ -37,7 +37,7 @@ function Home() {
             </p>
             <hr />
             <p>
-              <strong>Schnelle Bereitstellung:</strong> Ihr vServer steht Ihnen innerhalb von nur 5 Minuten nach der Buchung zur Verfügung. So können Sie Ihre Projekte sofort starten, ohne lange Wartezeiten.
+              <strong>Schnelle Bereitstellung:</strong> Ihr Server steht Ihnen innerhalb von nur 5 Minuten nach der Buchung zur Verfügung. So können Sie Ihre Projekte sofort starten, ohne lange Wartezeiten.
             </p>
             <hr />
             <p>
@@ -54,12 +54,12 @@ function Home() {
         </div>
       </section>
       <br />
-      <h3>vServer Angebote</h3>
+      <h3>Server Angebote</h3>
       <hr />
       <section id="servers">
         <div className="container server-grid">
           <div className="server-container">
-            <h3>vServer 1 - t2.micro</h3>
+            <h3>Server 1 - t2.micro</h3>
             <p2>Betriebssystem:</p2> <span>Windows/Linux</span>
             <p />
             <p2>CPU:</p2> <span>1 CPU</span>
@@ -73,7 +73,7 @@ function Home() {
             </p1>
           </div>
           <div className="server-container">
-            <h3>vServer 2 - t3.small</h3>
+            <h3>Server 2 - t3.small</h3>
             <p2>Betriebssystem:</p2> <span>Windows/Linux</span>
             <p />
             <p2>CPU:</p2> <span>2 CPUs</span>
@@ -87,7 +87,7 @@ function Home() {
             </p1>
           </div>
           <div className="server-container">
-            <h3>vServer 3 - t3.medium</h3>
+            <h3>Server 3 - t3.medium</h3>
             <p2>Betriebssystem:</p2> <span>Windows/Linux</span>
             <p />
             <p2>CPU:</p2> <span>2 CPUs</span>
@@ -101,7 +101,7 @@ function Home() {
             </p1>
           </div>
           <div className="server-container">
-            <h3>vServer 4 - c5.xlarge</h3>
+            <h3>Server 4 - c5.xlarge</h3>
             <p2>Betriebssystem:</p2> <span>Windows/Linux</span>
             <p />
             <p2>CPU:</p2> <span>4 CPUs</span>

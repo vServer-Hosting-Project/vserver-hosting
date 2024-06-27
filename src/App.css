@@ -113,7 +113,8 @@ body {
 
 .server-frame h4, .support-frame h4 {
   margin-bottom: 10px;
-  color: black;
+  font-weight: bold;
+  color: #1FD7DB;
 }
 
 .centered {

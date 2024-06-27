@@ -37,7 +37,8 @@ body {
 header {
   background-color: #bebebe6e;
   color: #000000;
-  padding: 1em 0;
+  padding: 0.5em 0;
+  height: 3.5em;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -62,10 +63,10 @@ h3 {
 }
 
 p1 {
-  color: #48ff00;
+  color: #000000;
   margin: 0;
-  font-size: 1.2em;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  font-size: 1em;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 p2 {
@@ -141,7 +142,7 @@ select {
 .server-container h3 {
   margin-top: 0;
   font-size: 2em;
-  color: #007bff;
+  color: #1FD7DB;
 }
 
 /* Paragraph styling */
@@ -153,7 +154,7 @@ select {
 
 /* Order button styling */
 .order-button {
-  background-color: #007bff;
+  background-color: #1e6a6b;
   color: #fff;
   border: none;
   padding: 0.75em 1.5em;
@@ -161,11 +162,12 @@ select {
   margin-top: 1em;
   border-radius: 5px;
   font-size: 1em;
+  margin-left: 55px;
   transition: background-color 0.2s;
 }
 
 .order-button:hover {
-  background-color: #0056b3;
+  background-color: #1FD7DB;
 }
 
 /* More info section styling */

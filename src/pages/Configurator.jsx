@@ -106,13 +106,13 @@ function Configurator({ addOrder }) {
   return (
     <div className="container">
       <header className="header">
-        <h3>vServer</h3>
+        <h3>Server Optionen</h3>
       </header>
       <main className="configurator">
         <div className="row">
           <div className="col">
             <div className="server-frame centered">
-              <h4>vServer - min</h4>
+              <h4>Server - min</h4>
               <div className="preconfigured-server no-background">
                 <p>Instanztyp: t2.micro</p>
                 <p>CPU: 1 Kern(e)</p>
@@ -151,7 +151,7 @@ function Configurator({ addOrder }) {
                 )}
                 {errorKleinster && <p className="error-message">{errorKleinster}</p>}
                 <div className="summary">
-                  <h4>Konfiguration:</h4>
+                  <p1>Konfiguration:</p1>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: t2.micro</p>
                   <hr />
                   <p>CPU: 1 Kern(e)</p>
@@ -174,7 +174,7 @@ function Configurator({ addOrder }) {
           </div>
           <div className="col">
             <div className="server-frame centered">
-              <h4>vServer Konfigurator</h4>
+              <h4>Server Konfigurator</h4>
               <div className="preconfigured-server no-background">
                 <div className="slider-container">
                   <label htmlFor="cpu-slider">CPU (Kerne): {selectedInstance.vCPUs}</label>
@@ -246,7 +246,7 @@ function Configurator({ addOrder }) {
                 )}
                 {errorKonfigurator && <p className="error-message">{errorKonfigurator}</p>}
                 <div className="summary">
-                  <h4>Konfiguration:</h4>
+                  <p1>Konfiguration:</p1>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: {selectedInstance.name}</p>
                   <hr />
                   <p>CPU: {selectedInstance.vCPUs} Kern(e)</p>
@@ -269,7 +269,7 @@ function Configurator({ addOrder }) {
           </div>
           <div className="col">
             <div className="server-frame centered">
-              <h4>vServer - max</h4>
+              <h4>Server - max</h4>
               <div className="preconfigured-server no-background">
                 <p>Instanztyp: m5.xlarge</p>
                 <p>CPU: 4 Kerne</p>
@@ -308,7 +308,7 @@ function Configurator({ addOrder }) {
                 )}
                 {errorGroesster && <p className="error-message">{errorGroesster}</p>}
                 <div className="summary">
-                  <h4>Konfiguration:</h4>
+                  <p1>Konfiguration:</p1>
                   <p><img src={awsLogo} alt="AWS Logo" className="aws-logo" />Instanztyp: m5.xlarge</p>
                   <hr />
                   <p>CPU: 4 Kerne</p>
