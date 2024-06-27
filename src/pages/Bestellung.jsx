@@ -37,6 +37,7 @@ const Bestellung = () => {
     <div className="container order-container">
       <header className="header">
         <h3>Vielen Dank für Ihre Bestellung!</h3>
+        <p>Sie erhalten in kürze eine Mail mit den Zugangsdaten für Ihren Server.</p>
       </header>
       <main className="order-summary">
         <h4>Bestellübersicht</h4>
