@@ -1,29 +1,49 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import '../App.css';
 
-function Bestellung() {
+const Bestellung = () => {
   const location = useLocation();
-  const { customerData, orderId } = location.state || {};
+  const { customerData, orders, orderNumber } = location.state;
 
   return (
-    <div className="container payment-container">
-      <header className="header">
-        <h3>Vielen Dank für Ihre Bestellung</h3>
-      </header>
-      <main className="payment">
-        <div className="invoice">
-          <h4>Rechnung</h4>
-          <p><strong>Bestellnummer:</strong> {orderId}</p>
-          <p><strong>Name:</strong> {customerData.firstName} {customerData.lastName}</p>
-          <p><strong>Anschrift:</strong></p>
-          <p>{customerData.street}</p>
-          <p>{customerData.phone}</p>
-          <p>{customerData.email}</p>
-        </div>
-      </main>
+    <div className="container">
+      <h2>Vielen Dank für Ihre Bestellung!</h2>
+      <p>Ihre Bestellnummer: {orderNumber}</p>
+      <h3>Rechnungsinformationen</h3>
+      <p>Name: {customerData.firstName} {customerData.lastName}</p>
+      <p>Straße: {customerData.street}</p>
+      <p>Telefon: {customerData.phone}</p>
+      <p>E-Mail: {customerData.email}</p>
+      
+      <h3>Bestellte Produkte</h3>
+      <table className="invoice-table">
+        <thead>
+          <tr>
+            <th>Instanztyp</th>
+            <th>CPU</th>
+            <th>RAM (GB)</th>
+            <th>Betriebssystem</th>
+            <th>Betriebssystemversion</th>
+            <th>Speicher (GB)</th>
+            <th>Preis (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order, index) => (
+            <tr key={index}>
+              <td>{order.instanceType}</td>
+              <td>{order.vCPUs}</td>
+              <td>{order.RAM}</td>
+              <td>{order.os}</td>
+              <td>{order.osVersion}</td>
+              <td>{order.storage}</td>
+              <td>{order.price}€</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default Bestellung;
